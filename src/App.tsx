@@ -19,8 +19,6 @@ const App: FC = () => {
         };
     }, []);
 
-    console.log(',');
-
     return (
         <div className="App">
             {users.map(({
@@ -28,24 +26,20 @@ const App: FC = () => {
                             name,
                             username,
                             email,
-                            street,
-                            suite,
-                            city,
-                            zipcode,
-                            lat,
-                            lng,
+                            address,
+                            phone,
+                            website,
+                            company
                         }, index) =>
                 <UserComponent key={index}
                                id={id}
                                name={name}
                                username={username}
                                email={email}
-                               street={street}
-                               suite={suite}
-                               city={city}
-                               zipcode={zipcode}
-                               lat={lat}
-                               lng={lng}
+                               address={address}
+                               phone={phone}
+                               website={website}
+                               company={company}
                 />)}
         </div>
     );
