@@ -19,6 +19,12 @@ const App: FC = () => {
         };
     }, []);
 
+    const [userId, setUserId] = useState<number>(0);
+
+    const clickHandler = (id: number) => {
+        setUserId(id)
+    }
+
     return (
         <div className="App">
             {users.map(({
@@ -40,7 +46,9 @@ const App: FC = () => {
                                phone={phone}
                                website={website}
                                company={company}
+                               clickHandler={clickHandler}
                 />)}
+            <h2>{userId}</h2>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import IUser from '../../model/IUser';
 
-type PropsWithChildren<T> = T & { children?: React.ReactNode }
+type PropsWithChildren<T> = T & { children?: React.ReactNode } & {clickHandler: (id: number) => void}
 
 const UserComponent: FC<PropsWithChildren<IUser>> = ({
                                                          id,
@@ -24,7 +24,8 @@ const UserComponent: FC<PropsWithChildren<IUser>> = ({
                                                              name: companyName,
                                                              catchPhrase,
                                                              bs
-                                                         }
+                                                         },
+                                                         clickHandler,
                                                      }) => {
     return (
         <div>
@@ -53,6 +54,7 @@ const UserComponent: FC<PropsWithChildren<IUser>> = ({
                 <p>BS: {bs}</p>
             </div>
             <p>Address:</p>
+            <button onClick={() => clickHandler(id)}>Info</button>
         </div>
     );
 };
