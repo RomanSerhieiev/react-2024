@@ -1,0 +1,15 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    border: black solid 2px;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.Review {
+    border: black solid 1px;
+    padding: 10px;
+    margin: 5px 0;
+}
