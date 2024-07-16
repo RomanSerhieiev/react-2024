@@ -6,6 +6,11 @@ const axiosInstance = axios.create({
     headers: {'Content-Type': 'application/json'},
 })
 
+axiosInstance.interceptors.request.use(interceptedRequest => {
+    interceptedRequest.headers.token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    return interceptedRequest;
+})
+
 const getUsers = async (): Promise<AxiosResponse<IUser[]>> => {
     return await axiosInstance('/users')
 };
