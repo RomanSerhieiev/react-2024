@@ -1,14 +1,17 @@
 import IUser from '../model/IUser';
-import { urls } from '../constants/urls';
+import axios, { AxiosResponse } from 'axios';
 
-const getUsers = async (): Promise<IUser[]> => {
-    return await fetch(urls.users)
-        .then(value => value.json())
+const axiosInstance = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com',
+    headers: {'Content-Type': 'application/json'},
+})
+
+const getUsers = async (): Promise<AxiosResponse<IUser[]>> => {
+    return await axiosInstance('/users')
 };
 
-const getUserById = async (id: number): Promise<IUser[]> => {
-    return await fetch(`${urls.users}/${id}`)
-        .then(value => value.json())
+const getUserById = async (id: number): Promise<AxiosResponse<IUser>> => {
+    return await axiosInstance(`/users/${id}`)
 };
 
 export {
