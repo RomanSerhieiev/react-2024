@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { IPost } from '../../model/IPost';
+import { IPost } from '../../models/IPost';
 
 const PostComponent: FC<IPost> = ({id, userId, title, body}) => {
     return (
         <div>
-            <h3>{title}</h3>
+            <h3>{id}. {title}</h3>
             <p>{body}</p>
         </div>
     );

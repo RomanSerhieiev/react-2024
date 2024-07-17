@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import IUser from '../../model/IUser';
+import IUser from '../../models/IUser';
 
 type PropsWithChildren<T> = T & { children?: React.ReactNode } & {clickHandler: (id: number) => void}
 
@@ -10,8 +10,8 @@ const UserComponent: FC<PropsWithChildren<IUser>> = ({
                                                      }) => {
     return (
         <div>
-            <h3>{id} - {name}</h3>
-            <button onClick={() => clickHandler(id)}>Info</button>
+            <h3>{id}. {name}</h3>
+            <button onClick={() => clickHandler(id)}>Show posts</button>
         </div>
     );
 };

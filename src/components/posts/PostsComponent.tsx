@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { IPost } from '../../model/IPost';
+import { IPost } from '../../models/IPost';
 import { PostComponent } from '../post/PostComponent';
 
 type IProps = { posts: IPost[] } & { children?: ReactNode }
