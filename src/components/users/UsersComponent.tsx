@@ -9,7 +9,7 @@ import css from './UsersComponent.module.css';
 
 const UsersComponent: FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
-    const [user, setUser] = useState<Partial<IUser>>({id: 0});
+    const [user, setUser] = useState<Partial<IUser>>(null);
     const [posts, setPosts] = useState<IPost[]>([]);
 
     useEffect(() => {
@@ -17,10 +17,8 @@ const UsersComponent: FC = () => {
             .then(value => {
                 setUsers([...value.data.users]);
             });
-    }, []);
 
-    useEffect(() => {
-        if (user.id !== undefined && user.id !== 0) {
+        if (user) {
             getPostsOfUser(user.id).then(value => {
                 setPosts([...value.data.posts]);
             });

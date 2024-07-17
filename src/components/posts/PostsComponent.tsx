@@ -11,11 +11,9 @@ interface IProps {
 type PropsWithChildren<T> = T & { children?: ReactNode }
 
 const PostsComponent: FC<PropsWithChildren<IProps>> = ({posts, user}) => {
-    const {id, firstName, lastName} = user
-
     return (
         <div>
-            {id !== 0 && <h1>{id}. {firstName} {lastName}</h1>}
+            {user && <h1>{user.id}. {user.firstName} {user.lastName}</h1>}
             {posts.map((post, index) => <PostComponent key={index} post={post} />)}
         </div>
     );
