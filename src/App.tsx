@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import './App.css';
+import SomeComponent from './components/SomeComponent';
 
 const App: FC = () => {
     return (
-        <div className="App">
-
+        <div>
+            <SomeComponent message={'hello'} />
         </div>
     );
 };
