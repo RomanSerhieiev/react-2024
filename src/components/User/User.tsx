@@ -16,7 +16,7 @@ const User: FC<IProps> = ({id}) => {
             .then(value => {
                 setUser(value);
             })
-    }, [id])
+    }, [])
 
     return (
         <div>
