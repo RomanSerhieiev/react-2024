@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import './App.css';
-import SomeComponent from './components/SomeComponent';
+import UserComponent from './components/UserComponent';
 
 const App: FC = () => {
     return (
         <div>
-            <SomeComponent message={'hello'} />
+            <UserComponent />
         </div>
     );
 };
