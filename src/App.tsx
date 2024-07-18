@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 import './App.css';
-import User from './components/User';
+import SomeComponent from './components/SomeComponent';
+import WrapComponent from './hoc/WrapComponent';
 
 const App: FC = () => {
     return (
         <div>
-            <User />
+            <WrapComponent>
+                <SomeComponent />
+            </WrapComponent>
         </div>
     );
 };
