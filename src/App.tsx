@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import './App.css';
-import OriginalComponent1 from './components/OriginalComponent1';
-import OriginalComponent2 from './components/OriginalComponent2';
+import User from './components/User';
 
 const App: FC = () => {
     return (
         <div>
-            <OriginalComponent1 />
-            <OriginalComponent2 />
+            <User />
         </div>
     );
 };
