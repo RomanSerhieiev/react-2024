@@ -1,6 +1,10 @@
 import React, { FC, memo } from 'react';
 
-const Menu: FC = memo(() => {
+type IProps = {
+    someFunc: () => void
+}
+
+const Menu: FC<IProps> = memo(() => {
         console.log('menu');
 
         return (
