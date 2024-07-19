@@ -1,12 +1,15 @@
-import React, { FC } from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import css from'./App.module.css';
+import Users from './components/Users/Users';
 
-const App: FC = () => {
-    return (
-        <div className="App">
-
-        </div>
-    );
-};
+class App extends Component {
+    render() {
+        return (
+            <div className={css.Container}>
+                <Users />
+            </div>
+        );
+    }
+}
 
 export default App;
