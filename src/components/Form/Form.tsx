@@ -1,45 +1,25 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
 
-interface IForm {
+interface IFormProps {
     username: string,
     password: string,
+    age: number
 }
 
 const Form: FC = () => {
-    const [formState, setFormState] = useState<IForm>({
-        username: 'asd',
-        password: 'qwe'
-    });
+    const {handleSubmit, register} = useForm<IFormProps>()
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        let user = {
-            username: formState.username,
-            password: formState.password
-        }
-        console.log(user);
-    };
-
-    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-        const input = e.target as HTMLFormElement;
-        setFormState({...formState, [input.name]: input.value})
+    const customHandler = (formDataProps: IFormProps) => {
+        console.log(formDataProps)
     }
-
-    // const handleUsernameChange = (e: FormEvent<HTMLInputElement>) => {
-    //     const input = e.target as HTMLFormElement;
-    //     setFormState({...formState, username: input.value})
-    // }
-    //
-    // const handlePaswordChange = (e: FormEvent<HTMLInputElement>) => {
-    //     const input = e.target as HTMLFormElement;
-    //     setFormState({...formState, password: input.value})
-    // }
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name={'username'} placeholder={'Name'} value={formState.username} onChange={handleInputChange} />
-                <input type="text" name={'password'} placeholder={'Password'} value={formState.password} onChange={handleInputChange} />
+            <form onSubmit={handleSubmit(customHandler)}>
+                <input type="text" {...register('username')} />
+                <input type="text" {...register('password')} />
+                <input type="number" {...register('age')} />
                 <button>send</button>
             </form>
         </div>
