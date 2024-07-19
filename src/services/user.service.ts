@@ -4,5 +4,5 @@ import { apiService } from './api.service';
 import { urls } from '../constants/urls';
 
 export const userService = {
-    getAll: () => apiService.get<IDummy<IUser[]>>(urls.users.all),
+    getAll: async () => await apiService.get<IDummy<IUser[]>>(urls.users.all),
 }

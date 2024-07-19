@@ -24,26 +24,18 @@ class Users extends Component<IProps, IState> {
     };
 
     componentDidMount() {
-        this.getUsers();
+        userService.getAll().then(res => {
+            this.setState({users: res.data.users});
+        });
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
         if (this.state.user && this.state.user.id !== undefined) {
-            this.getPostsOfUser(this.state.user.id);
+            postService.getAllOfUser(this.state.user.id).then(res => {
+                this.setState({posts: res.data.posts});
+            });
         }
     }
-
-    getUsers = () => {
-        userService.getAll().then(res => {
-            this.setState({users: res.data.users});
-        });
-    };
-
-    getPostsOfUser = (userId: number) => {
-        postService.getAllOfUser(userId).then(res => {
-            this.setState({posts: res.data.posts});
-        });
-    };
 
     userIfo = (user: Partial<IUser>) => {
         this.setState({user});
