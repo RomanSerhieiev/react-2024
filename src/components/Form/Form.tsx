@@ -15,40 +15,58 @@ const Form: FC = () => {
             errors,
             isValid,
         }
-    } = useForm<IFormProps>()
+    } = useForm<IFormProps>({
+        mode: 'all'
+    });
 
     const customHandler = (formDataProps: IFormProps) => {
-        console.log(formDataProps)
-    }
+        console.log(formDataProps);
+    };
 
     return (
         <div>
             <form onSubmit={handleSubmit(customHandler)}>
-                <input type="text" {...register('username', {
-                    required: true,
-                    pattern: {
-                        value: /^[a-zA-Z0-9]([a-zA-Z0-9_-]){1,14}[a-zA-Z0-9]$/,
-                        message: 'wrong username'
-                    }
-                })} />
-                <input type="text" {...register('password', {
-                    required: true,
-                    pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                        message: 'wrong password'
-                    }
-                })} />
-                <input type="number" {...register('age', {
-                    min: {
-                        value: 0,
-                        message: 'вік не може бути менше 0'
-                    },
-                    max: {
-                        value: 200,
-                        message: 'вік не може бути більше 200'
-                    },
-                })} />
-                <button>send</button>
+                <label>
+                    <input type="text" {...register('username', {
+                        required: {
+                            value: true,
+                            message: 'username is required'
+                        },
+                        pattern: {
+                            value: /^[a-zA-Z0-9]([a-zA-Z0-9_-]){1,14}[a-zA-Z0-9]$/,
+                            message: 'wrong username'
+                        }
+                    })} />
+                    {errors.username && <div>{errors.username.message}</div>}
+                </label>
+                <label>
+                    <input type="text" {...register('password', {
+                        required: {
+                            value: true,
+                            message: 'password is required'
+                        },
+                        pattern: {
+                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/,
+                            message: 'wrong password'
+                        }
+                    })} />
+                    {errors.password && <div>{errors.password.message}</div>}
+                </label>
+                <label>
+                    <input {...register('age', {
+                        valueAsNumber: true,
+                        min: {
+                            value: 0,
+                            message: 'age can\'t be less than 0'
+                        },
+                        max: {
+                            value: 200,
+                            message: 'age can\'t be greater than 0'
+                        },
+                    })} />
+                    {errors.age && <div>{errors.age.message}</div>}
+                </label>
+                <button disabled={!isValid}>send</button>
             </form>
         </div>
     );
