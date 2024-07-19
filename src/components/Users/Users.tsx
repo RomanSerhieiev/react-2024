@@ -30,8 +30,10 @@ class Users extends Component<IProps, IState> {
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
-        if (this.state.user && this.state.user.id !== undefined) {
-            postService.getAllOfUser(this.state.user.id).then(res => {
+        const user = this.state.user
+
+        if (user && user.id !== undefined && user.id !== prevState.user?.id) {
+            postService.getAllOfUser(user.id).then(res => {
                 this.setState({posts: res.data.posts});
             });
         }
