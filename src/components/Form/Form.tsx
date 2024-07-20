@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { userValidator } from '../validators/user.validator';
+import { userValidator } from '../../validators/user.validator';
 
 interface IFormProps {
     username: string,
