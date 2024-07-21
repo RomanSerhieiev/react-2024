@@ -1,26 +1,30 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { userService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
+import { useAppLocation } from '../../hooks/useAppLocation';
 
 const ContactPage: FC = () => {
-    const [contact, setContact] = useState<any>({});
+    const [contact, setContact] = useState<IUser | null>(null);
     const { id } = useParams()
-    const { state: {contact: user} } = useLocation()
+    const { state: {contact: user} } = useAppLocation<{ contact: IUser }>()
 
     useEffect(() => {
         if (user) {
             setContact(user)
+        } else if (id) {
+            userService.getById(id)
+                .then(value => {
+                    setContact(value.data)
+                })
+        } else {
+            throw new Error(`Couldn't find user with id ${id}`)
         }
-
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-            .then(res => res.json())
-            .then(user => {
-                setContact(user)
-            })
     }, [id, user]);
 
     return (
         <div>
-            <h3>{contact.id}. {contact.name}</h3>
+            <h3>{contact && <>{contact.id}. {contact.name}</>}</h3>
         </div>
     );
 };
