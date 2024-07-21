@@ -1,25 +1,34 @@
 import React, { FC, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const PaginationComponent: FC = () => {
-    const [query, setQuery] = useSearchParams()
+interface IProps {
+    prev: string | null,
+    next: string | null,
+}
+
+const PaginationComponent: FC<IProps> = ({prev, next}) => {
+    const [query, setQuery] = useSearchParams({page: '1'})
 
     return (
         <div>
-            <button onClick={() => {
-                const page = query.get("page")
+            <button
+                disabled={!prev}
+                onClick={() => {
+                const page = query.get('page')
                 if (page) {
                     const currentPage = +page
                     setQuery({page: `${currentPage - 1}`})
                 }
-            }}>prev</button>
-            <button onClick={() => {
+            }}>PREV</button>
+            <button
+                disabled={!next}
+                onClick={() => {
                 const page = query.get("page")
                 if (page) {
                     const currentPage = +page
                     setQuery({page: `${currentPage + 1}`})
                 }
-            }}>next</button>
+            }}>NEXT</button>
         </div>
     );
 };
