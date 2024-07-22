@@ -1,18 +1,18 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import MainLayout from '../layouts/main/MainLayout';
 import ErrorLayout from '../layouts/error/ErrorLayout';
-import UsersPage from '../pages/users/UsersPage';
-import UserPage from '../pages/user/UserPage';
-import AlbumsPage from '../pages/albums/AlbumsPage';
-import TodosPage from '../pages/todos/TodosPage';
-import PostsPage from '../pages/posts/PostsPage';
-import PostPage from '../pages/post/PostPage';
-import CommentsPage from '../pages/comments/CommentsPage';
-import CommentPage from '../pages/comment/CommentPage';
-import AlbumPage from '../pages/album/AlbumPage';
-import PhotosPage from '../pages/photos/PhotosPage';
-import PhotoPage from '../pages/photo/PhotoPage';
-import TodoPage from '../pages/todo/TodoPage';
+import UsersPage from '../pages/users/users/UsersPage';
+import UserInfoPage from '../pages/users/user-info/UserInfoPage';
+import AlbumsPage from '../pages/albums/albums/AlbumsPage';
+import TodosPage from '../pages/todos/todos/TodosPage';
+import PostsPage from '../pages/posts/posts/PostsPage';
+import PostInfoPage from '../pages/posts/post-info/PostInfoPage';
+import CommentsPage from '../pages/comments/comments/CommentsPage';
+import CommentInfoPage from '../pages/comments/comment-info/CommentInfoPage';
+import AlbumInfoPage from '../pages/albums/album-info/AlbumInfoPage';
+import PhotosPage from '../pages/photos/photos/PhotosPage';
+import PhotoInfoPage from '../pages/photos/photo-info/PhotoInfoPage';
+import TodoInfoPage from '../pages/todos/todo-info/TodoInfoPage';
 
 const routs: RouteObject[] = [
     {
@@ -29,68 +29,104 @@ const routs: RouteObject[] = [
                 element: <UsersPage />
             },
             {
-                path: 'users/:id',
-                element: <UserPage />
+                path: 'users/:userId',
+                element: <UserInfoPage />
             },
             {
-                path: 'users/:id/albums',
+                path: 'users/:userId/albums',
                 element: <AlbumsPage />
             },
             {
-                path: 'users/:id/todos',
+                path: 'users/:userId/albums/:albumId',
+                element: <AlbumInfoPage />
+            },
+            {
+                path: 'users/:userId/albums/:albumId/photos',
+                element: <PhotosPage />
+            },
+            {
+                path: 'users/:userId/albums/:albumId/photos/:photoId',
+                element: <PhotoInfoPage />
+            },
+            {
+                path: 'users/:userId/todos',
                 element: <TodosPage />
             },
             {
-                path: 'users/:id/posts',
+                path: 'users/:userId/todos/:todoId',
+                element: <TodoInfoPage />
+            },
+            {
+                path: 'users/:userId/posts',
                 element: <PostsPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId',
+                element: <PostInfoPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId/comments',
+                element: <CommentsPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId/comments/:commentId',
+                element: <CommentInfoPage />
             },
             {
                 path: 'posts',
                 element: <PostsPage />
             },
             {
-                path: 'posts/:id',
-                element: <PostPage />
+                path: 'posts/:postId',
+                element: <PostInfoPage />
             },
             {
-                path: 'posts/:id/comments',
+                path: 'posts/:postId/comments',
                 element: <CommentsPage />
+            },
+            {
+                path: 'posts/:postId/comments/:commentId',
+                element: <CommentInfoPage />
             },
             {
                 path: 'comments',
                 element: <CommentsPage />
             },
             {
-                path: 'comments/:id',
-                element: <CommentPage />
+                path: 'comments/:commentId',
+                element: <CommentInfoPage />
             },
             {
                 path: 'albums',
                 element: <AlbumsPage />
             },
             {
-                path: 'albums/:id',
-                element: <AlbumPage />
+                path: 'albums/:albumId',
+                element: <AlbumInfoPage />
             },
             {
-                path: 'albums/:id/photos',
+                path: 'albums/:albumId/photos',
                 element: <PhotosPage />
+            },
+            {
+                path: 'albums/:albumId/photos/:photoId',
+                element: <PhotoInfoPage />
             },
             {
                 path: 'photos',
                 element: <PhotosPage />
             },
             {
-                path: 'photos/:id',
-                element: <PhotoPage />
+                path: 'photos/:photoId',
+                element: <PhotoInfoPage />
             },
             {
                 path: 'todos',
                 element: <TodosPage />
             },
             {
-                path: 'todos/:id',
-                element: <TodoPage />
+                path: 'todos/:todoId',
+                element: <TodoInfoPage />
             }
         ]
     }

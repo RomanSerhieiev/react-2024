@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
+import css from './NavComponent.module.css'
 import { NavLink } from 'react-router-dom';
 
 const NavComponent: FC = () => {
     return (
-        <ul>
-            <li><NavLink to={'posts'}>Posts</NavLink></li>
-            <li><NavLink to={'comments'}>Comments</NavLink></li>
-            <li><NavLink to={'albums'}>Albums</NavLink></li>
-            <li><NavLink to={'photos'}>Photos</NavLink></li>
-            <li><NavLink to={'todos'}>Todos</NavLink></li>
-            <li><NavLink to={'users'}>Users</NavLink></li>
-            <hr />
-        </ul>
+        <div className={css.Container}>
+            <NavLink to={'posts'}><button>POSTS</button></NavLink>
+            <NavLink to={'comments'}><button>COMMENTS</button></NavLink>
+            <NavLink to={'albums'}><button>ALBUMS</button></NavLink>
+            <NavLink to={'photos'}><button>PHOTOS</button></NavLink>
+            <NavLink to={'todos'}><button>TODOS</button></NavLink>
+            <NavLink to={'users'}><button>USERS</button></NavLink>
+        </div>
     );
 };
 
