@@ -14,7 +14,7 @@ const CarsPage: FC = () => {
         total_items: 0
     });
 
-    const [query, setQuery] = useSearchParams({page: '1'})
+    const [query] = useSearchParams()
 
     useEffect(() => {
         carService.getAll(query.get('page') || '1')
@@ -25,21 +25,10 @@ const CarsPage: FC = () => {
             });
     }, [query]);
 
-    const changePage = (page: string) => {
-        switch (page) {
-            case 'next':
-                setQuery({...carsRes.next});
-                break;
-            case 'prev':
-                setQuery({...carsRes.prev});
-                break;
-        }
-    }
-
     return (
         <div>
             <CarsComponent cars={carsRes.items} />
-            <PaginationComponent next={carsRes.next} prev={carsRes.prev} changePage={changePage} />
+            <PaginationComponent next={carsRes.next} prev={carsRes.prev} />
         </div>
     );
 };
