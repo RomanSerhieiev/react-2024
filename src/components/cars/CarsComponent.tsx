@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { ICarWithAuth } from '../../interfaces/car-with-auth.interface';
+import { ICar } from '../../interfaces/car.interface';
 
 interface IProps {
-    cars: ICarWithAuth[]
+    cars: ICar[]
 }
 
 const CarsComponent: FC<IProps> = ({cars}) => {
