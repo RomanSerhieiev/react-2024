@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import css from './SignInComponent.module.css'
 import { useForm } from 'react-hook-form';
 import { authService } from '../../services/auth.service';
 import { IAuth } from '../../interfaces/auth.interface';
@@ -21,13 +22,15 @@ const SignInComponent: FC = () => {
     };
 
     return (
-        <div>
-            <h3>Sign in form</h3>
+        <div className={css.Container}>
+            <h3>Sign-in</h3>
             {isSignIn ?
                 <div>You have successfully authenticated</div> :
                 <form onSubmit={handleSubmit(signIn)}>
-                    <input type="text" {...register('username')} />
-                    <input type="text" {...register('password')} />
+                    <label htmlFor="username">Enter your username:</label>
+                    <input id="username" type="text" {...register('username')} />
+                    <label htmlFor="password">Enter your password:</label>
+                    <input id="password" type="text" {...register('password')} />
                     <button>LOGIN</button>
                 </form>
             }

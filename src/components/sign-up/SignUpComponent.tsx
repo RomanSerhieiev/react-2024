@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import css from './SignUpComponent.module.css'
 import { useForm } from 'react-hook-form';
 import { IAuth } from '../../interfaces/auth.interface';
 import { userService } from '../../services/user.service';
@@ -13,16 +14,18 @@ const SignUpComponent: FC = () => {
 
     const signUp = async (signUpData: IAuth) => {
         const res = await userService.post(signUpData);
-        setUser(res.data);
+        setUser(res);
     };
 
     return (
-        <div>
-            <h3>Sign up form</h3>
+        <div className={css.Container}>
+            <h3>Sign-up</h3>
             {user ?
                 <div>You have successfully registered</div> :
                 <form onSubmit={handleSubmit(signUp)}>
+                    <label htmlFor="username">Enter your username:</label>
                     <input type="text" {...register('username')} />
+                    <label htmlFor="password">Enter your password:</label>
                     <input type="text" {...register('password')} />
                     <button>REGISTER</button>
                 </form>

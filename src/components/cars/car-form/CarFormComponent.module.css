@@ -1,0 +1,31 @@
+.Container h3 {
+    text-align: center;
+}
+
+.Container form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container form input {
+    padding: 10px;
+    border: #263e52 3px solid;
+    border-radius: 5px;
+}
+
+.Container form button {
+    padding: 10px 20px;
+    border: none;
+    background: #263e52;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.Container form label {
+    text-align: center;
+}

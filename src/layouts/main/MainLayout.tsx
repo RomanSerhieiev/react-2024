@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
-import HeaderComponent from '../../components/header/HeaderComponent';
+import css from './MainLayout.module.css'
+import NavComponent from '../../components/nav/NavComponent';
 import { Outlet } from 'react-router-dom';
-import FooterComponent from '../../components/footer/FooterComponent';
 
 const MainLayout: FC = () => {
     return (
-        <div>
-            <HeaderComponent />
+        <div className={css.Container}>
+            <NavComponent />
             <Outlet />
-            <FooterComponent />
         </div>
     );
 };
