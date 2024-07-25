@@ -4,8 +4,8 @@ import { IUser } from '../interfaces/user.interface';
 import { IAuth } from '../interfaces/auth.interface';
 
 export const userService = {
-    post: async (user: IAuth): Promise<IUser> => {
+    post: async (user: IAuth): Promise<boolean> => {
         const res = await apiService.post<IUser>(url.users.base, user);
-        return res.data
+        return !!res.data.id
     },
 }

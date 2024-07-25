@@ -1,12 +1,11 @@
 import React, { FC, useState } from 'react';
-import css from './SignUpComponent.module.css'
+import css from './SignUpComponent.module.css';
 import { useForm } from 'react-hook-form';
 import { IAuth } from '../../interfaces/auth.interface';
 import { userService } from '../../services/user.service';
-import { IUser } from '../../interfaces/user.interface';
 
 const SignUpComponent: FC = () => {
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState<boolean>();
     const {
         handleSubmit,
         register
