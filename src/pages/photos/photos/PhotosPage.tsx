@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 
 const PhotosPage: FC = () => {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
-    const { state } = useAppLocation<{ photos: IPhoto[] } | null>()
+    const { state } = useAppLocation<IPhoto[] | null>()
     const { albumId } = useParams()
 
     useEffect(() => {
         if (state) {
-            setPhotos(state.photos)
+            setPhotos(state)
         } else if (albumId) {
             photoService.getByAlbum(albumId)
                 .then(value => {
@@ -25,7 +25,7 @@ const PhotosPage: FC = () => {
                     setPhotos(value.data)
                 })
         }
-    }, [state]);
+    }, [state, albumId]);
 
     return (
         <div className={css.Container}>

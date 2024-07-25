@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 
 const TodosPage: FC = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
-    const { state } = useAppLocation<{ todos: ITodo[] } | null>()
+    const { state } = useAppLocation<ITodo[] | null>()
     const { userId } = useParams()
 
     useEffect(() => {
         if (state) {
-            setTodos(state.todos)
+            setTodos(state)
         } else if (userId) {
             todoService.getByUser(userId)
                 .then(value => {
@@ -25,7 +25,7 @@ const TodosPage: FC = () => {
                     setTodos(value.data)
                 })
         }
-    }, [state]);
+    }, [state, userId]);
 
     return (
         <div className={css.Container}>

@@ -5,6 +5,7 @@ import { IUser } from '../../../interfaces/user.interface';
 import { ITodo } from '../../../interfaces/todo.interface';
 import { IPost } from '../../../interfaces/post.interface';
 import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from '../../../hooks/useAppNavigate';
 
 interface IProps {
     user: IUser,
@@ -14,19 +15,7 @@ interface IProps {
 }
 
 const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
-    const navigate = useNavigate();
-
-    const albumsNavigateHandler = () => {
-        navigate(`albums`, {state: {albums}})
-    }
-
-    const todosNavigateHandler = () => {
-        navigate(`todos`, {state: {todos}})
-    }
-
-    const postsNavigateHandler = () => {
-        navigate(`posts`, {state: {posts}})
-    }
+    const navigateHandler = useAppNavigate()
 
     return (
         <div className={css.Container}>
@@ -51,9 +40,9 @@ const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
                 <p>CATCH PHRASE: {user.company.catchPhrase}</p>
                 <p>BS: {user.company.bs}</p>
             </div>
-            <button onClick={albumsNavigateHandler}>ALBUMS</button>
-            <button onClick={todosNavigateHandler}>TODOS</button>
-            <button onClick={postsNavigateHandler}>POSTS</button>
+            <button onClick={() => navigateHandler<IAlbum[]>(`albums`, albums)}>ALBUMS</button>
+            <button onClick={() => navigateHandler<ITodo[]>(`todos`, todos)}>TODOS</button>
+            <button onClick={() => navigateHandler<IPost[]>(`posts`, posts)}>POSTS</button>
         </div>
     );
 };

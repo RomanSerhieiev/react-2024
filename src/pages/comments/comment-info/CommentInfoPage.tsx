@@ -12,11 +12,16 @@ const CommentInfoPage: FC = () => {
     const [comment, setComment] = useState<IComment>();
     const [post, setPost] = useState<IPost>();
     const {commentId} = useParams();
-    const {state} = useAppLocation<{ comment: IComment } | null>();
+    const {state} = useAppLocation<IComment | null>();
 
     useEffect(() => {
-        if (state) {
-            setComment(state.comment);
+        if (comment) {
+            postService.getById(`${comment.postId}`)
+                .then(value => {
+                    setPost(value.data);
+                });
+        } else if (state) {
+            setComment(state);
         } else if (commentId) {
             commentService.getById(commentId)
                 .then(value => {
@@ -25,16 +30,7 @@ const CommentInfoPage: FC = () => {
         } else {
             throw new Error(`Couldn't find comment with id ${commentId}`);
         }
-    }, [commentId, state]);
-
-    useEffect(() => {
-        if (comment) {
-            postService.getById(`${comment.postId}`)
-                .then(value => {
-                    setPost(value.data);
-                });
-        }
-    }, [comment]);
+    }, [comment, commentId, state]);
 
     return (
         <div className={css.Container}>

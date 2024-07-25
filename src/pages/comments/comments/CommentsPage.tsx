@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 
 const CommentsPage: FC = () => {
     const [comments, setComments] = useState<IComment[]>([]);
-    const { state } = useAppLocation<{ comments: IComment[] } | null>()
+    const { state } = useAppLocation<IComment[] | null>()
     const { postId } = useParams()
 
     useEffect(() => {
         if (state) {
-            setComments(state.comments)
+            setComments(state)
         } else if (postId) {
             commentService.getByPost(postId)
                 .then(value => {
@@ -25,7 +25,7 @@ const CommentsPage: FC = () => {
                     setComments(value.data)
                 })
         }
-    }, [state]);
+    }, [state, postId]);
 
     return (
         <div className={css.Container}>

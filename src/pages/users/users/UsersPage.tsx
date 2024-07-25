@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import css from './UsersPage.module.css'
+import css from './UsersPage.module.css';
 import UsersComponent from '../../../components/users/users/UsersComponent';
 import { IUser } from '../../../interfaces/user.interface';
 import { userService } from '../../../services/user.service';

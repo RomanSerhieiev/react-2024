@@ -12,11 +12,16 @@ const PhotoInfoPage: FC = () => {
     const [photo, setPhoto] = useState<IPhoto>();
     const [album, setAlbum] = useState<IAlbum>();
     const {photoId} = useParams();
-    const {state} = useAppLocation<{ photo: IPhoto } | null>();
+    const {state} = useAppLocation<IPhoto | null>();
 
     useEffect(() => {
-        if (state) {
-            setPhoto(state.photo);
+        if (photo) {
+            albumService.getById(`${photo.albumId}`)
+                .then(value => {
+                    setAlbum(value.data);
+                });
+        } else if (state) {
+            setPhoto(state);
         } else if (photoId) {
             photoService.getById(photoId)
                 .then(value => {
@@ -25,16 +30,7 @@ const PhotoInfoPage: FC = () => {
         } else {
             throw new Error(`Couldn't find photo with id ${photoId}`);
         }
-    }, [photoId, state]);
-
-    useEffect(() => {
-        if (photo) {
-            albumService.getById(`${photo.albumId}`)
-                .then(value => {
-                    setAlbum(value.data);
-                });
-        }
-    }, [photo]);
+    }, [photo, photoId, state]);
 
     return (
         <div className={css.Container}>

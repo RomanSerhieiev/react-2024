@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 
 const AlbumsPage: FC = () => {
     const [albums, setAlbums] = useState<IAlbum[]>([]);
-    const { state } = useAppLocation<{ albums: IAlbum[] } | null>()
+    const { state } = useAppLocation<IAlbum[] | null>()
     const { userId } = useParams()
 
     useEffect(() => {
         if (state) {
-            setAlbums(state.albums)
+            setAlbums(state)
         } else if (userId) {
             albumService.getByUser(userId)
                 .then(value => {

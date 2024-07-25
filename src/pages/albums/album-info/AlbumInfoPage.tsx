@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import css from './AlbumInfoPage.module.css'
+import css from './AlbumInfoPage.module.css';
 import AlbumInfoComponent from '../../../components/albums/album-info/AlbumInfoComponent';
 import { IAlbum } from '../../../interfaces/album.interface';
 import { useParams } from 'react-router-dom';
@@ -14,21 +14,8 @@ const AlbumInfoPage: FC = () => {
     const [album, setAlbum] = useState<IAlbum>();
     const [user, setUser] = useState<IUser>();
     const [photos, setPhotos] = useState<IPhoto[]>([]);
-    const { albumId } = useParams()
-    const { state } = useAppLocation<{ album: IAlbum } | null>()
-
-    useEffect(() => {
-        if (state) {
-            setAlbum(state.album)
-        } else if (albumId) {
-            albumService.getById(albumId)
-                .then(value => {
-                    setAlbum(value.data)
-                })
-        } else {
-            throw new Error(`Couldn't find album with id ${albumId}`)
-        }
-    }, [albumId, state]);
+    const {albumId} = useParams();
+    const {state} = useAppLocation<IAlbum | null>();
 
     useEffect(() => {
         if (album) {
@@ -40,12 +27,21 @@ const AlbumInfoPage: FC = () => {
                 .then(value => {
                     setPhotos(value.data);
                 });
+        } else if (state) {
+            setAlbum(state);
+        } else if (albumId) {
+            albumService.getById(albumId)
+                .then(value => {
+                    setAlbum(value.data);
+                });
+        } else {
+            throw new Error(`Couldn't find album with id ${albumId}`);
         }
-    }, [album]);
+    }, [album, albumId, state]);
 
     return (
         <div className={css.Container}>
-            {album && user && photos &&<AlbumInfoComponent album={album} user={user} photos={photos} />}
+            {album && user && photos && <AlbumInfoComponent album={album} user={user} photos={photos} />}
         </div>
     );
 };

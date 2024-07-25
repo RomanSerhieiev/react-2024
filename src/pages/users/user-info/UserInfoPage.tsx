@@ -18,20 +18,7 @@ const UserInfoPage: FC = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
     const [posts, setPosts] = useState<IPost[]>([]);
     const { userId } = useParams()
-    const { state } = useAppLocation<{ user: IUser } | null>()
-
-    useEffect(() => {
-        if (state) {
-            setUser(state.user)
-        } else if (userId) {
-            userService.getById(userId)
-                .then(value => {
-                    setUser(value.data)
-                })
-        } else {
-            throw new Error(`Couldn't find user with id ${userId}`)
-        }
-    }, [userId, state]);
+    const { state } = useAppLocation<IUser | null>()
 
     useEffect(() => {
         if (user) {
@@ -47,8 +34,17 @@ const UserInfoPage: FC = () => {
                 .then(value => {
                     setPosts(value.data);
                 });
+        } else if (state) {
+            setUser(state)
+        } else if (userId) {
+            userService.getById(userId)
+                .then(value => {
+                    setUser(value.data)
+                })
+        } else {
+            throw new Error(`Couldn't find user with id ${userId}`)
         }
-    }, [user]);
+    }, [user, userId, state]);
 
     return (
         <div className={css.Container}>

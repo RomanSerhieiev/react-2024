@@ -15,20 +15,7 @@ const PostInfoPage: FC = () => {
     const [user, setUser] = useState<IUser>();
     const [comments, setComments] = useState<IComment[]>([]);
     const { postId } = useParams()
-    const { state } = useAppLocation<{ post: IPost } | null>()
-
-    useEffect(() => {
-        if (state) {
-            setPost(state.post)
-        } else if (postId) {
-            postService.getById(postId)
-                .then(value => {
-                    setPost(value.data)
-                })
-        } else {
-            throw new Error(`Couldn't find post with id ${postId}`)
-        }
-    }, [postId, state]);
+    const { state } = useAppLocation<IPost | null>()
 
     useEffect(() => {
         if (post) {
@@ -40,8 +27,17 @@ const PostInfoPage: FC = () => {
                 .then(value => {
                     setComments(value.data);
                 });
+        } else if (state) {
+            setPost(state)
+        } else if (postId) {
+            postService.getById(postId)
+                .then(value => {
+                    setPost(value.data)
+                })
+        } else {
+            throw new Error(`Couldn't find post with id ${postId}`)
         }
-    }, [post]);
+    }, [post, postId, state]);
 
     return (
         <div className={css.Container}>

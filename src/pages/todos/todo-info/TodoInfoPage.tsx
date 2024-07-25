@@ -12,11 +12,16 @@ const TodoInfoPage: FC = () => {
     const [todo, setTodo] = useState<ITodo | null>(null);
     const [user, setUser] = useState<IUser | null>(null);
     const {todoId} = useParams();
-    const {state} = useAppLocation<{ todo: ITodo }>();
+    const {state} = useAppLocation<ITodo>();
 
     useEffect(() => {
-        if (state) {
-            setTodo(state.todo);
+        if (todo) {
+            userService.getById(`${todo.userId}`)
+                .then(value => {
+                    setUser(value.data);
+                });
+        } else if (state) {
+            setTodo(state);
         } else if (todoId) {
             todoService.getById(todoId)
                 .then(value => {
@@ -25,16 +30,7 @@ const TodoInfoPage: FC = () => {
         } else {
             throw new Error(`Couldn't find todo with id ${todoId}`);
         }
-    }, [todoId, state]);
-
-    useEffect(() => {
-        if (todo) {
-            userService.getById(`${todo.userId}`)
-                .then(value => {
-                    setUser(value.data);
-                });
-        }
-    }, [todo]);
+    }, [todo, todoId, state]);
 
     return (
         <div className={css.Container}>

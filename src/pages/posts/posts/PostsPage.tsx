@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 
 const PostsPage: FC = () => {
     const [posts, setPosts] = useState<IPost[]>([]);
-    const { state } = useAppLocation<{ posts: IPost[] } | null>()
+    const { state } = useAppLocation<IPost[] | null>()
     const { userId } = useParams()
 
     useEffect(() => {
         if (state) {
-            setPosts(state.posts)
+            setPosts(state)
         } else if (userId) {
             postService.getByUser(userId)
                 .then(value => {
@@ -25,7 +25,7 @@ const PostsPage: FC = () => {
                     setPosts(value.data)
                 })
         }
-    }, [state]);
+    }, [state, userId]);
 
     return (
         <div className={css.Container}>

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import css from './PhotoInfoComponent.module.css'
+import css from './PhotoInfoComponent.module.css';
 import { IPhoto } from '../../../interfaces/photo.interface';
 import { IAlbum } from '../../../interfaces/album.interface';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from '../../../hooks/useAppNavigate';
 
 interface IProps {
     photo: IPhoto
@@ -10,17 +10,13 @@ interface IProps {
 }
 
 const PhotoInfoComponent: FC<IProps> = ({photo, album}) => {
-    const navigate = useNavigate();
-
-    const navigateHandler = () => {
-        navigate(`/albums/${album.id}`, {state: {album}})
-    }
+    const navigateHandler = useAppNavigate()
 
     return (
         <div className={css.Container}>
             <h3>{photo.id}. {photo.title}</h3>
             <img src={photo.url} alt={photo.title} />
-            <p>ALBUM: <button onClick={navigateHandler}>{album.title}</button></p>
+            <p>ALBUM: <button onClick={() => navigateHandler<IAlbum>(`/albums/${album.id}`, album)}>{album.title}</button></p>
         </div>
     );
 };
