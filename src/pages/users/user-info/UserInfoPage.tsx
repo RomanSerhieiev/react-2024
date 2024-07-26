@@ -23,23 +23,23 @@ const UserInfoPage: FC = () => {
     useEffect(() => {
         if (user) {
             albumService.getByUser(`${user.id}`)
-                .then(value => {
-                    setAlbums(value.data);
+                .then(({data}) => {
+                    setAlbums(data);
                 });
             todoService.getByUser(`${user.id}`)
-                .then(value => {
-                    setTodos(value.data);
+                .then(({data}) => {
+                    setTodos(data);
                 });
             postService.getByUser(`${user.id}`)
-                .then(value => {
-                    setPosts(value.data);
+                .then(({data}) => {
+                    setPosts(data);
                 });
         } else if (state) {
             setUser(state)
         } else if (userId) {
             userService.getById(userId)
-                .then(value => {
-                    setUser(value.data)
+                .then(({data}) => {
+                    setUser(data)
                 })
         } else {
             throw new Error(`Couldn't find user with id ${userId}`)

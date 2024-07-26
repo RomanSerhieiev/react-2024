@@ -17,15 +17,15 @@ const TodoInfoPage: FC = () => {
     useEffect(() => {
         if (todo) {
             userService.getById(`${todo.userId}`)
-                .then(value => {
-                    setUser(value.data);
+                .then(({data}) => {
+                    setUser(data);
                 });
         } else if (state) {
             setTodo(state);
         } else if (todoId) {
             todoService.getById(todoId)
-                .then(value => {
-                    setTodo(value.data);
+                .then(({data}) => {
+                    setTodo(data);
                 });
         } else {
             throw new Error(`Couldn't find todo with id ${todoId}`);

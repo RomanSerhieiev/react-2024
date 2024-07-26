@@ -20,19 +20,19 @@ const PostInfoPage: FC = () => {
     useEffect(() => {
         if (post) {
             userService.getById(`${post.userId}`)
-                .then(value => {
-                    setUser(value.data);
+                .then(({data}) => {
+                    setUser(data);
                 });
             commentService.getByPost(`${post.id}`)
-                .then(value => {
-                    setComments(value.data);
+                .then(({data}) => {
+                    setComments(data);
                 });
         } else if (state) {
             setPost(state)
         } else if (postId) {
             postService.getById(postId)
-                .then(value => {
-                    setPost(value.data)
+                .then(({data}) => {
+                    setPost(data)
                 })
         } else {
             throw new Error(`Couldn't find post with id ${postId}`)

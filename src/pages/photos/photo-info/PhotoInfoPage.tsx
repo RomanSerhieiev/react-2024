@@ -17,15 +17,15 @@ const PhotoInfoPage: FC = () => {
     useEffect(() => {
         if (photo) {
             albumService.getById(`${photo.albumId}`)
-                .then(value => {
-                    setAlbum(value.data);
+                .then(({data}) => {
+                    setAlbum(data);
                 });
         } else if (state) {
             setPhoto(state);
         } else if (photoId) {
             photoService.getById(photoId)
-                .then(value => {
-                    setPhoto(value.data);
+                .then(({data}) => {
+                    setPhoto(data);
                 });
         } else {
             throw new Error(`Couldn't find photo with id ${photoId}`);

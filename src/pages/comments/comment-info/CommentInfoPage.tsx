@@ -17,15 +17,15 @@ const CommentInfoPage: FC = () => {
     useEffect(() => {
         if (comment) {
             postService.getById(`${comment.postId}`)
-                .then(value => {
-                    setPost(value.data);
+                .then(({data}) => {
+                    setPost(data);
                 });
         } else if (state) {
             setComment(state);
         } else if (commentId) {
             commentService.getById(commentId)
-                .then(value => {
-                    setComment(value.data);
+                .then(({data}) => {
+                    setComment(data);
                 });
         } else {
             throw new Error(`Couldn't find comment with id ${commentId}`);

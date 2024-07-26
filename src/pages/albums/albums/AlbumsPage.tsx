@@ -4,33 +4,57 @@ import AlbumsComponent from '../../../components/albums/albums/AlbumsComponent';
 import { useAppLocation } from '../../../hooks/useAppLocation';
 import { IAlbum } from '../../../interfaces/album.interface';
 import { albumService } from '../../../services/album.service';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import PaginationComponent from '../../../components/pagination/PaginationComponent';
+import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 
 const AlbumsPage: FC = () => {
     const [albums, setAlbums] = useState<IAlbum[]>([]);
-    const { state } = useAppLocation<IAlbum[] | null>()
-    const { userId } = useParams()
+    const [filteredAlbums, setFilteredAlbums] = useState<IAlbum[]>([]);
+    const [pages, setPages] = useState<number>(1);
+    const [params] = useSearchParams();
+    const {state} = useAppLocation<IAlbum[] | null>();
+    const {userId} = useParams();
 
     useEffect(() => {
         if (state) {
-            setAlbums(state)
+            setAlbums(state);
         } else if (userId) {
             albumService.getByUser(userId)
-                .then(value => {
-                    setAlbums(value.data)
-                })
+                .then(({data}) => {
+                    setAlbums(data);
+                });
         } else {
             albumService.getAll()
-                .then(value => {
-                    setAlbums(value.data)
-                })
+                .then(({data}) => {
+                    setAlbums(data);
+                });
         }
     }, [userId, state]);
 
+    useEffect(() => {
+        const pageParam = params.get('page');
+        const page = pageParam ? +pageParam : 1;
+        const skipParam = params.get('skip');
+        const skip = skipParam ? +skipParam : 25;
+
+        setFilteredAlbums(albums.slice((page - 1) * skip, (page - 1) * skip + skip));
+
+        if (albums.length % skip === 0) {
+            setPages(albums.length / skip)
+        } else {
+            setPages(Math.floor(albums.length / skip) + 1)
+        }
+    }, [params, albums]);
+
     return (
         <div className={css.Container}>
-            <h2>ALBUMS</h2>
-            <AlbumsComponent albums={albums} />
+            <div>
+                <h2>ALBUMS</h2>
+                <FiltrationComponent />
+                <AlbumsComponent albums={filteredAlbums} />
+            </div>
+            <PaginationComponent pages={pages} />
         </div>
     );
 };

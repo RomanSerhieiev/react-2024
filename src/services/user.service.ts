@@ -1,9 +1,9 @@
-import { AxiosResponse } from 'axios';
 import { apiService } from './api.service';
 import { url } from '../constants/urls';
 import { IUser } from '../interfaces/user.interface';
+import { IRes } from '../types/axios-response.type';
 
 export const userService = {
-    getAll: async (): Promise<AxiosResponse<IUser[]>> => await apiService.get<IUser[]>(url.users.all),
-    getById: async (id: string): Promise<AxiosResponse<IUser>> => await apiService.get<IUser>(url.users.byId(id)),
+    getAll: (): IRes<IUser[]> => apiService.get<IUser[]>(url.users.all),
+    getById: (id: string): IRes<IUser> => apiService.get<IUser>(url.users.byId(id)),
 }

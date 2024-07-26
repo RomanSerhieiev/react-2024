@@ -1,0 +1,15 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.Container button {
+    padding: 10px 20px;
+    border: #263e52 3px solid;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+}

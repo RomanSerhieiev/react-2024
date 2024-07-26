@@ -20,19 +20,19 @@ const AlbumInfoPage: FC = () => {
     useEffect(() => {
         if (album) {
             userService.getById(`${album.userId}`)
-                .then(value => {
-                    setUser(value.data);
+                .then(({data}) => {
+                    setUser(data);
                 });
             photoService.getByAlbum(`${album.id}`)
-                .then(value => {
-                    setPhotos(value.data);
+                .then(({data}) => {
+                    setPhotos(data);
                 });
         } else if (state) {
             setAlbum(state);
         } else if (albumId) {
             albumService.getById(albumId)
-                .then(value => {
-                    setAlbum(value.data);
+                .then(({data}) => {
+                    setAlbum(data);
                 });
         } else {
             throw new Error(`Couldn't find album with id ${albumId}`);
