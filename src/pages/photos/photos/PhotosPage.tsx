@@ -51,7 +51,7 @@ const PhotosPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <h2>PHOTOS</h2>
-                <FiltrationComponent />
+                <FiltrationComponent items={photos.length} />
                 <PhotosComponent photos={filteredPhotos} />
             </div>
             <PaginationComponent pages={pages} />

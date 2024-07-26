@@ -39,7 +39,7 @@ const UsersPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <h2>USERS</h2>
-                <FiltrationComponent />
+                <FiltrationComponent items={users.length} />
                 <UsersComponent users={filteredUsers} />
             </div>
             <PaginationComponent pages={pages} />

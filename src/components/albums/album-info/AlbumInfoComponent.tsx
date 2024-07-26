@@ -17,8 +17,8 @@ const AlbumInfoComponent: FC<IProps> = ({album, user, photos}) => {
     return (
         <div className={css.Container}>
             <h3>{album.id}. {album.title}</h3>
-            <div>USER: <button onClick={() => navigateHandler<IPhoto[]>(`photos`, photos)}>{user.name}</button></div>
-            <button onClick={() => navigateHandler<IUser>(`/users/${user.id}`, user)}>PHOTOS</button>
+            <div>USER: <button onClick={() => navigateHandler<IUser>(`/users/${user.id}`, user)}>{user.name}</button></div>
+            <button onClick={() => navigateHandler<IPhoto[]>(`photos`, photos)}>PHOTOS</button>
         </div>
     );
 };

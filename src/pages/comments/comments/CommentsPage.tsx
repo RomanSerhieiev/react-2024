@@ -51,7 +51,7 @@ const CommentsPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <h2>COMMENTS</h2>
-                <FiltrationComponent />
+                <FiltrationComponent items={comments.length} />
                 <CommentsComponent comments={filteredComments} />
             </div>
             <PaginationComponent pages={pages} />

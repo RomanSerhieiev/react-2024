@@ -51,7 +51,7 @@ const PostsPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <h2>POSTS</h2>
-                <FiltrationComponent />
+                <FiltrationComponent items={posts.length} />
                 <PostsComponent posts={filteredPosts} />
             </div>
             <PaginationComponent pages={pages} />

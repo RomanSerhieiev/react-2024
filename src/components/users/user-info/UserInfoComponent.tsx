@@ -4,7 +4,6 @@ import { IAlbum } from '../../../interfaces/album.interface';
 import { IUser } from '../../../interfaces/user.interface';
 import { ITodo } from '../../../interfaces/todo.interface';
 import { IPost } from '../../../interfaces/post.interface';
-import { useNavigate } from 'react-router-dom';
 import { useAppNavigate } from '../../../hooks/useAppNavigate';
 
 interface IProps {

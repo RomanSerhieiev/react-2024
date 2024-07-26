@@ -51,7 +51,7 @@ const TodosPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <h2>TODOS</h2>
-                <FiltrationComponent />
+                <FiltrationComponent items={todos.length} />
                 <TodosComponent todos={filteredTodos} />
             </div>
             <PaginationComponent pages={pages} />
