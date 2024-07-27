@@ -5,18 +5,20 @@ import { tokenPair } from '../constants/token-pair';
 import { retrieveLocalStorageData } from '../helpers/retrieve-local-storage-data.helper';
 import { IUserResponse } from '../interfaces/user-response.interface';
 import { IUser } from '../interfaces/user.interface';
+import { AxiosResponse } from 'axios';
+import { localStorageSave } from '../helpers/local-storage-save.helper';
 
 export const authService = {
     auth: async (user: IUser): Promise<boolean> => {
         const {data, data: {access, refresh}} = await apiService.post<IToken>(url.auth.base, user);
-        localStorage.setItem(tokenPair, JSON.stringify(data));
+        localStorageSave<IToken>(data)
         return !!(access && refresh);
     },
 
     refresh: async (): Promise<void> => {
         const refresh = retrieveLocalStorageData<IToken>(tokenPair).refresh
         const {data} = await apiService.post<IToken>(url.auth.refresh, {refresh});
-        localStorage.setItem(tokenPair, JSON.stringify(data));
+        localStorageSave<IToken>(data)
     },
 
     getMe: async (): Promise<IUserResponse> => {

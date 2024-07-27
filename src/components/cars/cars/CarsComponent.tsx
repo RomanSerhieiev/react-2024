@@ -5,13 +5,14 @@ import { ICarResponse } from '../../../interfaces/car-response.interface';
 
 interface IProps {
     cars: ICarResponse[],
-    setSelectedCar: (car: ICarResponse) => void;
+    setCarForUpdate: (car: ICarResponse) => void,
+    setTrigger: (trigger: boolean) => void,
 }
 
-const CarsComponent: FC<IProps> = ({cars, setSelectedCar}) => {
+const CarsComponent: FC<IProps> = ({cars, setCarForUpdate, setTrigger}) => {
     return (
         <div className={css.Container}>
-            {cars.map(car => <CarComponent key={car.id} car={car} setSelectedCar={setSelectedCar} />)}
+            {cars.map(car => <CarComponent key={car.id} car={car} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger} />)}
         </div>
     );
 };

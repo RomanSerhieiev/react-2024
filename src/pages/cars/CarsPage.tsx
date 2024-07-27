@@ -20,8 +20,9 @@ const CarsPage: FC = () => {
         total_pages: 0,
         total_items: 0
     });
-    const [selectedCar, setSelectedCar] = useState<ICarResponse | null>(null);
-    
+    const [carForUpdate, setCarForUpdate] = useState<ICarResponse | null>(null);
+    const [trigger, setTrigger] = useState<boolean>(false);
+
     useEffect(() => {
         const getCars = async () => {
             try {
@@ -46,14 +47,16 @@ const CarsPage: FC = () => {
             }
         }
 
+        setTrigger(false)
+
         getCars().then()
-    }, [navigate, query, selectedCar])
+    }, [navigate, query, carForUpdate, trigger])
 
     return (
         <div className={css.Container}>
             <div>
-                <CarFormComponent selectedCar={selectedCar} setSelectedCar={setSelectedCar} />
-                <CarsComponent cars={cars.items} setSelectedCar={setSelectedCar} />
+                <CarFormComponent carForUpdate={carForUpdate} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger} />
+                <CarsComponent cars={cars.items} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger} />
             </div>
             <PaginationComponent next={cars.next} prev={cars.prev} />
         </div>

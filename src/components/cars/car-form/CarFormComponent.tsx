@@ -2,16 +2,16 @@ import React, { FC, useEffect } from 'react';
 import css from './CarFormComponent.module.css';
 import { useForm } from 'react-hook-form';
 import { carService } from '../../../services/car.service';
-import { useNavigate } from 'react-router-dom';
 import { ICarResponse } from '../../../interfaces/car-response.interface';
 import { ICar } from '../../../interfaces/car.interface';
 
 interface IProps {
-    selectedCar: ICarResponse | null,
-    setSelectedCar: (car: ICarResponse | null) => void,
+    carForUpdate: ICarResponse | null,
+    setCarForUpdate: (trigger: null) => void,
+    setTrigger: (trigger: boolean) => void,
 }
 
-const CarFormComponent: FC<IProps> = ({selectedCar, setSelectedCar}) => {
+const CarFormComponent: FC<IProps> = ({carForUpdate, setCarForUpdate, setTrigger}) => {
     const {
         handleSubmit,
         register,
@@ -24,32 +24,34 @@ const CarFormComponent: FC<IProps> = ({selectedCar, setSelectedCar}) => {
     } = useForm<ICar>();
 
     useEffect(() => {
-        if (selectedCar) {
-            setValue('brand', selectedCar.brand, {shouldValidate: true});
-            setValue('price', selectedCar.price, {shouldValidate: true});
-            setValue('year', selectedCar.year, {shouldValidate: true});
+        if (carForUpdate) {
+            setValue('brand', carForUpdate.brand, {shouldValidate: true});
+            setValue('price', carForUpdate.price, {shouldValidate: true});
+            setValue('year', carForUpdate.year, {shouldValidate: true});
         }
-    }, [selectedCar, setValue]);
+    }, [carForUpdate, setValue]);
 
-    const create = async (car: ICar) => {
+    const createCar = async (car: ICar) => {
         await carService.create(car);
+        setTrigger(true);
         reset();
     };
 
-    const update = async (car: ICar) => {
-        await carService.fullUpdateById(`${selectedCar?.id}`, car);
-        setSelectedCar(null);
+    const updateCar = async (car: ICar) => {
+        await carService.fullUpdateById(`${carForUpdate?.id}`, car);
+        setCarForUpdate(null);
         reset();
     };
 
     const resetFields = async () => {
+        setCarForUpdate(null);
         reset()
     }
 
     return (
         <div className={css.Container}>
-            <h3>{selectedCar ? 'Update' : 'Create'} a car</h3>
-            <form onSubmit={handleSubmit(selectedCar ? update : create)}>
+            <h3>{carForUpdate ? 'Update' : 'Create'} a car</h3>
+            <form onSubmit={handleSubmit(carForUpdate ? updateCar : createCar)}>
                 <label>Brand:
                     <input type={'text'} {...register('brand')} />
                     {errors.brand && <span>{errors.brand.message}</span>}
@@ -62,7 +64,7 @@ const CarFormComponent: FC<IProps> = ({selectedCar, setSelectedCar}) => {
                     <input type={'text'} {...register('year')} />
                     {errors.year && <span>{errors.year.message}</span>}
                 </label>
-                <button disabled={!isValid} type={'submit'}>{selectedCar ? 'UPDATE' : 'CREATE'}</button>
+                <button disabled={!isValid} type={'submit'}>{carForUpdate ? 'UPDATE' : 'CREATE'}</button>
                 <button onClick={resetFields} type={'reset'}>RESET</button>
             </form>
         </div>

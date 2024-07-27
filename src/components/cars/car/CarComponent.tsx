@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import css from './CarComponent.module.css';
 import { ICarResponse } from '../../../interfaces/car-response.interface';
+import { carService } from '../../../services/car.service';
 
 interface IProps {
     car: ICarResponse,
-    setSelectedCar: (car: ICarResponse) => void;
+    setCarForUpdate: (car: ICarResponse) => void,
+    setTrigger: (trigger: boolean) => void,
 }
 
 const CarComponent: FC<IProps> = ({
@@ -16,17 +18,36 @@ const CarComponent: FC<IProps> = ({
                                           brand,
                                           photo
                                       },
-                                      setSelectedCar
+                                      setCarForUpdate,
+                                      setTrigger
                                   }) => {
+    const deleteCar = async () => {
+        await carService.deleteById(`${car.id}`);
+        setTrigger(true);
+    };
+
+    const updatePhoto = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            const photo = event.target.files[0];
+            await carService.updatePhotoById(`${car.id}`, {photo});
+            setTrigger(true);
+        }
+    };
+
     return (
         <div className={css.Container}>
-            <h3>{id}. {brand}</h3>
-            <div>Price: {price}</div>
-            <div>Year: {year}</div>
-            <img src={photo} alt={brand} />
             <div>
-                <button onClick={() => setSelectedCar(car)}>UPDATE</button>
-                <button>DELETE</button>
+                <h3>{id}. {brand}</h3>
+                <div>Price: {price}</div>
+                <div>Year: {year}</div>
+                {photo && <img src={photo} alt={brand} />}
+            </div>
+            <div>
+                {!photo && <label>UPLOAD PHOTO
+                  <input type={'file'} onChange={updatePhoto} />
+                </label>}
+                <button onClick={() => setCarForUpdate(car)}>UPDATE</button>
+                <button onClick={deleteCar}>DELETE</button>
             </div>
         </div>
     );
