@@ -2,21 +2,21 @@ import React, { FC, useState } from 'react';
 import css from './SignInComponent.module.css'
 import { useForm } from 'react-hook-form';
 import { authService } from '../../services/auth.service';
-import { IAuth } from '../../interfaces/auth.interface';
+import { IUser } from '../../interfaces/user.interface';
 
 const SignInComponent: FC = () => {
     const [isSignIn, setIsSignIn] = useState<boolean>(false);
     const {
         handleSubmit,
         register
-    } = useForm<IAuth>({
+    } = useForm<IUser>({
         defaultValues: {
             username: 'userRS1',
             password: 'P@$$word1'
         }
     });
 
-    const signIn = async (signInData: IAuth) => {
+    const signIn = async (signInData: IUser) => {
         const res = await authService.auth(signInData);
         setIsSignIn(res);
     };

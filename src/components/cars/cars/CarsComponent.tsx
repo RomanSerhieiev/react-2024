@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import css from './CarsComponent.module.css'
-import { ICarRes } from '../../../interfaces/car-res.interface';
 import CarComponent from '../car/CarComponent';
+import { ICarResponse } from '../../../interfaces/car-response.interface';
 
 interface IProps {
-    cars: ICarRes[],
-    setSelectedCar: (car: ICarRes) => void;
+    cars: ICarResponse[],
+    setSelectedCar: (car: ICarResponse) => void;
 }
 
 const CarsComponent: FC<IProps> = ({cars, setSelectedCar}) => {

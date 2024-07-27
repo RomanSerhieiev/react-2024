@@ -5,6 +5,7 @@
     padding: 10px;
     border: #263e52 solid 4px;
     border-radius: 20px;
+    justify-content: space-between;
 }
 
 .Container h3 {

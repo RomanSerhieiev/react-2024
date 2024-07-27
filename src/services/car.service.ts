@@ -1,37 +1,42 @@
-import { ICarRes } from '../interfaces/car-res.interface';
 import { apiService } from './api.service';
 import { url } from '../constants/urls';
-import { ICars } from '../interfaces/cars';
-import { ICarReq } from '../interfaces/car-req.interface';
+import { ICars } from '../interfaces/cars.interface';
+import { ICar } from '../interfaces/car.interface';
+import { ICarResponse } from '../interfaces/car-response.interface';
 
 export const carService = {
     getAll: async (page: string = '1'): Promise<ICars | null> => {
-        const res = await apiService.get<ICars>(url.cars.base, {params: {page}});
-        return res.data;
+        const {data} = await apiService.get<ICars>(url.cars.base, {params: {page}});
+        return data;
     },
 
-    post: async (car: ICarReq): Promise<ICarRes | null> => {
-            const res = await apiService.post<ICarRes>(url.cars.base, car);
-            return res.data;
+    create: async (car: ICar): Promise<ICarResponse | null> => {
+            const {data} = await apiService.post<ICarResponse>(url.cars.base, car);
+            return data;
     },
 
-    getById: async (id: string): Promise<ICarRes | null> => {
-            const res = await apiService.get<ICarRes>(url.cars.byId(id));
-            return res.data;
+    getById: async (id: string): Promise<ICarResponse | null> => {
+            const {data} = await apiService.get<ICarResponse>(url.cars.byId(id));
+            return data;
     },
 
-    putById: async (id: string, car: ICarReq): Promise<ICarRes | null> => {
-            const res = await apiService.put<ICarRes>(url.cars.byId(id), car);
-            return res.data;
+    fullUpdateById: async (id: string, car: ICar): Promise<ICarResponse | null> => {
+            const {data} = await apiService.put<ICarResponse>(url.cars.byId(id), car);
+            return data;
     },
 
-    patchById: async (id: string, car: ICarReq): Promise<ICarRes | null> => {
-            const res = await apiService.patch<ICarRes>(url.cars.byId(id), car);
-            return res.data;
+    partialUpdateById: async (id: string, car: ICar): Promise<ICarResponse | null> => {
+            const {data} = await apiService.patch<ICarResponse>(url.cars.byId(id), car);
+            return data;
+    },
+
+    updatePhotoById: async (id: string, photo: string): Promise<ICarResponse | null> => {
+        const {data} = await apiService.put<ICarResponse>(url.cars.photoById(id), photo);
+        return data;
     },
 
     deleteById: async (id: string): Promise<void> => {
-            const res = await apiService.delete(url.cars.byId(id));
-            return res.data;
+            const {data} = await apiService.delete(url.cars.byId(id));
+            return data;
     },
 };

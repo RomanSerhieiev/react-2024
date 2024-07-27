@@ -1,17 +1,17 @@
 import React, { FC, useState } from 'react';
 import css from './SignUpComponent.module.css';
 import { useForm } from 'react-hook-form';
-import { IAuth } from '../../interfaces/auth.interface';
 import { userService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
 
 const SignUpComponent: FC = () => {
     const [user, setUser] = useState<boolean>();
     const {
         handleSubmit,
         register
-    } = useForm<IAuth>();
+    } = useForm<IUser>();
 
-    const signUp = async (signUpData: IAuth) => {
+    const signUp = async (signUpData: IUser) => {
         const res = await userService.post(signUpData);
         setUser(res);
     };

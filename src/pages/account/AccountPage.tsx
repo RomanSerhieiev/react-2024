@@ -1,24 +1,26 @@
 import React, { FC, useEffect, useState } from 'react';
 import css from './AccountPage.module.css'
 import AccountComponent from '../../components/account/AccountComponent';
-import { IUser } from '../../interfaces/user.interface';
 import { authService } from '../../services/auth.service';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { IUserResponse } from '../../interfaces/user-response.interface';
 
 const AccountPage: FC = () => {
     const navigate = useNavigate()
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState<IUserResponse>();
 
     useEffect(() => {
-        const getAccount = async () => {
+        const getAccountInfo = async () => {
             try {
-                const res = await authService.me();
-                if (res) {
-                    setUser({...res});
+                const response = await authService.getMe();
+
+                if (response) {
+                    setUser({...response});
                 }
             } catch (e) {
                 const axiosError = e as AxiosError
+
                 if (axiosError && axiosError?.response?.status === 401) {
                     try {
                         await authService.refresh();
@@ -26,15 +28,16 @@ const AccountPage: FC = () => {
                         return navigate('/')
                     }
 
-                    const res = await authService.me();
-                    if (res) {
-                        setUser({...res});
+                    const response = await authService.getMe();
+
+                    if (response) {
+                        setUser({...response});
                     }
                 }
             }
         }
 
-        getAccount()
+        getAccountInfo().then()
     }, [navigate]);
 
     return (

@@ -1,18 +1,29 @@
 import React, { FC } from 'react';
-import css from './CarComponent.module.css'
-import { ICarRes } from '../../../interfaces/car-res.interface';
+import css from './CarComponent.module.css';
+import { ICarResponse } from '../../../interfaces/car-response.interface';
 
 interface IProps {
-    car: ICarRes,
-    setSelectedCar: (car: ICarRes) => void;
+    car: ICarResponse,
+    setSelectedCar: (car: ICarResponse) => void;
 }
 
-const CarComponent: FC<IProps> = ({car,setSelectedCar}) => {
+const CarComponent: FC<IProps> = ({
+                                      car,
+                                      car: {
+                                          id,
+                                          price,
+                                          year,
+                                          brand,
+                                          photo
+                                      },
+                                      setSelectedCar
+                                  }) => {
     return (
         <div className={css.Container}>
-            <h3>{car.id}. {car.brand}</h3>
-            <p>Price: {car.price}</p>
-            <p>Year: {car.year}</p>
+            <h3>{id}. {brand}</h3>
+            <div>Price: {price}</div>
+            <div>Year: {year}</div>
+            <img src={photo} alt={brand} />
             <div>
                 <button onClick={() => setSelectedCar(car)}>UPDATE</button>
                 <button>DELETE</button>
