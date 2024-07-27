@@ -36,3 +36,7 @@
 .Container form label {
     text-align: center;
 }
+
+.Error {
+    color: crimson;
+}

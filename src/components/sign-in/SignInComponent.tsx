@@ -1,24 +1,31 @@
 import React, { FC, useState } from 'react';
-import css from './SignInComponent.module.css'
+import css from './SignInComponent.module.css';
 import { useForm } from 'react-hook-form';
 import { authService } from '../../services/auth.service';
 import { IUser } from '../../interfaces/user.interface';
+import { joiResolver } from '@hookform/resolvers/joi';
+import { userValidator } from '../../validators/user.validator';
 
 const SignInComponent: FC = () => {
     const [isSignIn, setIsSignIn] = useState<boolean>(false);
     const {
         handleSubmit,
-        register
+        register,
+        formState: {
+            errors
+        }
     } = useForm<IUser>({
         defaultValues: {
             username: 'userRS1',
             password: 'P@$$word1'
-        }
+        },
+        mode: 'all',
+        resolver: joiResolver(userValidator)
     });
 
     const signIn = async (signInData: IUser) => {
-        const res = await authService.auth(signInData);
-        setIsSignIn(res);
+        const response = await authService.auth(signInData);
+        setIsSignIn(response);
     };
 
     return (
@@ -27,10 +34,14 @@ const SignInComponent: FC = () => {
             {isSignIn ?
                 <div>You have successfully authenticated</div> :
                 <form onSubmit={handleSubmit(signIn)}>
-                    <label htmlFor="username">Enter your username:</label>
-                    <input id="username" type="text" {...register('username')} />
-                    <label htmlFor="password">Enter your password:</label>
-                    <input id="password" type="text" {...register('password')} />
+                    <label>Enter your username:
+                        <input type="text" {...register('username')} />
+                        {errors.username && <div className={css.Error}>{errors.username.message}</div>}
+                    </label>
+                    <label>Enter your password:
+                        <input type="text" {...register('password')} />
+                        {errors.password && <div className={css.Error}>{errors.password.message}</div>}
+                    </label>
                     <button>LOGIN</button>
                 </form>
             }
