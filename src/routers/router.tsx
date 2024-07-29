@@ -3,7 +3,7 @@ import MainLayout from '../layouts/main/MainLayout';
 import ErrorLayout from '../layouts/error/ErrorLayout';
 
 const routs: RouteObject[] = [{
-    path: '',
+    path: 'https://romanserhieiev.github.io/react-2024/',
     element: <MainLayout />,
     errorElement: <ErrorLayout />,
 }]
