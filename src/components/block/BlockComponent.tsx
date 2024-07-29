@@ -1,23 +1,27 @@
 import React, { FC, useState } from 'react';
-import css from './BlockComponent.module.css'
+import css from './BlockComponent.module.css';
 import { IBlock } from '../../interfaces/block.interface';
+import { ELanguage } from '../../enums/language.enum';
 
 interface IProps {
-    block: IBlock
+    block: IBlock,
+    language: ELanguage
 }
 
-export const BlockComponent: FC<IProps> = ({block}) => {
+const BlockComponent: FC<IProps> = ({block, language}) => {
     const [count, setCount] = useState<number>(0);
 
     return (
         <div className={css.Container}>
-            <p>{block.name}</p>
-            <img src={block.image} alt={block.name} width={block.width} height={block.height} />
+            <p>{language === ELanguage.UA ? block.name_ua : block.name_en}</p>
+            <img src={block.image} alt={language === ELanguage.UA ? block.name_ua : block.name_en} width={block.width} height={block.height} />
             <div className={css.Buttons}>
-                <button disabled={count <= 0} onClick={() => setCount(count-1)}>-</button>
+                <button disabled={count <= 0} onClick={() => setCount(count - 1)}>-</button>
                 <span>{count}</span>
-                <button disabled={count >= 9} onClick={() => setCount(count+1)}>+</button>
+                <button disabled={count >= 9} onClick={() => setCount(count + 1)}>+</button>
             </div>
         </div>
     );
 };
+
+export default BlockComponent;

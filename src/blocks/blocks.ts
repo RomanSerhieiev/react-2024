@@ -5,7 +5,8 @@ import { EClass } from '../enums/class';
 export const Blocks: IBlock[] = [
     {
         id: 1,
-        name: 'Ancient Holy Grail',
+        name_ua: 'Стародавній Святий Грааль',
+        name_en: 'Ancient Holy Grail',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/7a/Antique_Normal_Ancient_Holy_Grail.png',
@@ -16,7 +17,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 2,
-        name: 'Ancient Holy Grail',
+        name_ua: 'Стародавній Святий Грааль',
+        name_en: 'Ancient Holy Grail',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/7e/Antique_Rare_Ancient_Holy_Grail.png',
@@ -27,7 +29,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 3,
-        name: 'Boulder Staff',
+        name_ua: 'Валуновий посох',
+        name_en: 'Boulder Staff',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/2/2a/Antique_Normal_Boulder_Staff.png',
@@ -38,7 +41,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 4,
-        name: 'Boulder Staff',
+        name_ua: 'Валуновий посох',
+        name_en: 'Boulder Staff',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/2/22/Antique_Rare_Boulder_Staff.png',
@@ -49,7 +53,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 5,
-        name: 'Cadian Goblet',
+        name_ua: 'Кадійський келих',
+        name_en: 'Cadian Goblet',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/2/23/Antique_Normal_Cadian_Goblet.png',
@@ -60,7 +65,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 6,
-        name: 'Cadian Goblet',
+        name_ua: 'Кадійський келих',
+        name_en: 'Cadian Goblet',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/4/44/Antique_Rare_Cadian_Goblet.png',
@@ -71,7 +77,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 7,
-        name: 'Exorcism Ring',
+        name_ua: 'Перстень екзорцизму',
+        name_en: 'Exorcism Ring',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/93/Antique_Normal_Exorcism_Ring.png',
@@ -82,7 +89,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 8,
-        name: 'Exorcism Ring',
+        name_ua: 'Перстень екзорцизму',
+        name_en: 'Exorcism Ring',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/8/89/Antique_Rare_Exorcism_Ring.png',
@@ -93,7 +101,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 9,
-        name: 'Gilded Sacred Lamp',
+        name_ua: 'Священна позолочена лампа',
+        name_en: 'Gilded Sacred Lamp',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/5/53/Antique_Normal_Gilded_Sacred_Lamp.png',
@@ -104,7 +113,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 10,
-        name: 'Gilded Sacred Lamp',
+        name_ua: 'Священна позолочена лампа',
+        name_en: 'Gilded Sacred Lamp',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/ba/Antique_Rare_Gilded_Sacred_Lamp.png',
@@ -115,7 +125,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 11,
-        name: 'Gleaming Earrings',
+        name_ua: 'Блискучі сережки',
+        name_en: 'Gleaming Earrings',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/4/4d/Antique_Normal_Gleaming_Earrings.png',
@@ -126,7 +137,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 12,
-        name: 'Gleaming Earrings',
+        name_ua: 'Блискучі сережки',
+        name_en: 'Gleaming Earrings',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/a/a2/Antique_Rare_Gleaming_Earrings.png',
@@ -137,7 +149,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 13,
-        name: 'Lakeside Harp',
+        name_ua: 'Озерна арфа',
+        name_en: 'Lakeside Harp',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/7f/Antique_Normal_Lakeside_Harp.png',
@@ -148,7 +161,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 14,
-        name: 'Lakeside Harp',
+        name_ua: 'Озерна арфа',
+        name_en: 'Lakeside Harp',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/0/01/Antique_Rare_Lakeside_Harp.png',
@@ -159,7 +173,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 15,
-        name: 'Luminescent Lamp',
+        name_ua: 'Люмінесцентна лампа',
+        name_en: 'Luminescent Lamp',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/c/c0/Antique_Normal_Luminescent_Lamp.png',
@@ -170,7 +185,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 16,
-        name: 'Luminescent Lamp',
+        name_ua: 'Люмінесцентна лампа',
+        name_en: 'Luminescent Lamp',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/f/f7/Antique_Rare_Luminescent_Lamp.png',
@@ -181,7 +197,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 17,
-        name: 'Monastery Pot',
+        name_ua: 'Монастирський горщик',
+        name_en: 'Monastery Pot',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/b9/Antique_Normal_Monastery_Pot.png',
@@ -192,7 +209,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 18,
-        name: 'Monastery Pot',
+        name_ua: 'Монастирський горщик',
+        name_en: 'Monastery Pot',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/e/e9/Antique_Rare_Monastery_Pot.png',
@@ -203,7 +221,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 19,
-        name: 'Relic Hourglass',
+        name_ua: 'Реліктовий пісочний годинник',
+        name_en: 'Relic Hourglass',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/38/Antique_Normal_Relic_Hourglass.png',
@@ -214,7 +233,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 20,
-        name: 'Relic Hourglass',
+        name_ua: 'Реліктовий пісочний годинник',
+        name_en: 'Relic Hourglass',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/36/Antique_Rare_Relic_Hourglass.png',
@@ -225,7 +245,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 21,
-        name: 'Ritual Porcelain',
+        name_ua: 'Ритуальна порцеляна',
+        name_en: 'Ritual Porcelain',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/d/de/Antique_Normal_Ritual_Porcelain.png',
@@ -236,7 +257,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 22,
-        name: 'Ritual Porcelain',
+        name_ua: 'Ритуальна порцеляна',
+        name_en: 'Ritual Porcelain',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/a/a2/Antique_Rare_Ritual_Porcelain.png',
@@ -247,7 +269,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 23,
-        name: 'Wasteland Horn',
+        name_ua: 'Ріг пустки',
+        name_en: 'Wasteland Horn',
         rarity: ERarity.NORMAL,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/f/fc/Antique_Normal_Wasteland_Horn.png',
@@ -258,7 +281,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 24,
-        name: 'Wasteland Horn',
+        name_ua: 'Ріг пустки',
+        name_en: 'Wasteland Horn',
         rarity: ERarity.RARE,
         class: EClass.ANTIQUE,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/0/06/Antique_Rare_Wasteland_Horn.png',
@@ -269,7 +293,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 25,
-        name: 'Anglerfish',
+        name_ua: 'Вудильник',
+        name_en: 'Anglerfish',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/76/Food_Normal_Anglerfish.png',
@@ -280,7 +305,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 26,
-        name: 'Anglerfish',
+        name_ua: 'Вудильник',
+        name_en: 'Anglerfish',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/99/Food_Rare_Anglerfish.png',
@@ -291,7 +317,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 27,
-        name: 'Blue Fire Prawn',
+        name_ua: 'Синя вогняна креветка',
+        name_en: 'Blue Fire Prawn',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/3b/Food_Normal_Blue_Fire_Prawn.png',
@@ -302,7 +329,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 28,
-        name: 'Blue Fire Prawn',
+        name_ua: 'Синя вогняна креветка',
+        name_en: 'Blue Fire Prawn',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/95/Food_Rare_Blue_Fire_Prawn.png',
@@ -313,7 +341,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 29,
-        name: 'Coldwater Octopus',
+        name_ua: 'Холодноводний восьминіг',
+        name_en: 'Coldwater Octopus',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/2/2b/Food_Normal_Coldwater_Octopus.png',
@@ -324,7 +353,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 30,
-        name: 'Coldwater Octopus',
+        name_ua: 'Холодноводний восьминіг',
+        name_en: 'Coldwater Octopus',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/9f/Food_Rare_Coldwater_Octopus.png',
@@ -335,7 +365,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 31,
-        name: 'Flying Fish',
+        name_ua: 'Летюча риба',
+        name_en: 'Flying Fish',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/8/8d/Food_Normal_Flying_Fish.png',
@@ -346,7 +377,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 32,
-        name: 'Flying Fish',
+        name_ua: 'Летюча риба',
+        name_en: 'Flying Fish',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/3f/Food_Rare_Flying_Fish.png',
@@ -357,7 +389,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 33,
-        name: 'King Crab',
+        name_ua: 'Королівський краб',
+        name_en: 'King Crab',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/a/a2/Food_Normal_King_Crab.png',
@@ -368,7 +401,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 34,
-        name: 'King Crab',
+        name_ua: 'Королівський краб',
+        name_en: 'King Crab',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/77/Food_Rare_King_Crab.png',
@@ -379,7 +413,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 35,
-        name: 'Late Summer Eel',
+        name_ua: 'Пізньо-літній вугор',
+        name_en: 'Late Summer Eel',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/9f/Food_Normal_Late_Summer_Eel.png',
@@ -390,7 +425,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 36,
-        name: 'Late Summer Eel',
+        name_ua: 'Пізньо-літній вугор',
+        name_en: 'Late Summer Eel',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/1/1b/Food_Rare_Late_Summer_Eel.png',
@@ -401,7 +437,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 37,
-        name: 'Manta Ray',
+        name_ua: 'Манта',
+        name_en: 'Manta Ray',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/5/50/Food_Normal_Manta_Ray.png',
@@ -412,7 +449,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 38,
-        name: 'Manta Ray',
+        name_ua: 'Манта',
+        name_en: 'Manta Ray',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/5/57/Food_Rare_Manta_Ray.png',
@@ -423,7 +461,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 39,
-        name: 'Northern Vale Cutlassfish',
+        name_ua: 'Катлас Північної Долини',
+        name_en: 'Northern Vale Cutlassfish',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/1/17/Food_Normal_Northern_Vale_Cutlassfish.png',
@@ -434,7 +473,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 40,
-        name: 'Northern Vale Cutlassfish',
+        name_ua: 'Катлас Північної Долини',
+        name_en: 'Northern Vale Cutlassfish',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/be/Food_Rare_Northern_Vale_Cutlassfish.png',
@@ -445,7 +485,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 41,
-        name: 'Onion',
+        name_ua: 'Цибуля',
+        name_en: 'Onion',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/b1/Food_Normal_Onion.png',
@@ -456,7 +497,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 42,
-        name: 'Onion',
+        name_ua: 'Цибуля',
+        name_en: 'Onion',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/a/a8/Food_Rare_Onion.png',
@@ -467,7 +509,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 43,
-        name: 'Queen Lobster',
+        name_ua: 'Королева омарів',
+        name_en: 'Queen Lobster',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/8/84/Food_Normal_Queen_Lobster.png',
@@ -478,7 +521,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 44,
-        name: 'Queen Lobster',
+        name_ua: 'Королева омарів',
+        name_en: 'Queen Lobster',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/4/4c/Food_Rare_Queen_Lobster.png',
@@ -489,7 +533,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 45,
-        name: 'Radish',
+        name_ua: 'Редька',
+        name_en: 'Radish',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/3c/Food_Normal_Radish.png',
@@ -500,7 +545,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 46,
-        name: 'Radish',
+        name_ua: 'Редька',
+        name_en: 'Radish',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/72/Food_Rare_Radish.png',
@@ -511,7 +557,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 47,
-        name: 'Sugar Cane',
+        name_ua: 'Цукрова тростина',
+        name_en: 'Sugar Cane',
         rarity: ERarity.NORMAL,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/d/d4/Food_Normal_Sugarcane.png',
@@ -522,7 +569,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 48,
-        name: 'Sugar Cane',
+        name_ua: 'Цукрова тростина',
+        name_en: 'Sugar Cane',
         rarity: ERarity.RARE,
         class: EClass.FOOD,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/4/4a/Food_Rare_Sugarcane.png',
@@ -533,7 +581,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 49,
-        name: 'Academy Armor',
+        name_ua: 'Броня Академії',
+        name_en: 'Academy Armor',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/3d/Weapon_Normal_Academy_Armor.png',
@@ -544,7 +593,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 50,
-        name: 'Academy Armor',
+        name_ua: 'Броня Академії',
+        name_en: 'Academy Armor',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/97/Weapon_Rare_Academy_Armor.png',
@@ -555,7 +605,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 51,
-        name: 'Akakage Shuriken',
+        name_ua: 'Сюрікен Акакаге',
+        name_en: 'Akakage Shuriken',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/1/1a/Weapon_Normal_Akakage_Shuriken.png',
@@ -566,7 +617,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 52,
-        name: 'Akakage Shuriken',
+        name_ua: 'Сюрікен Акакаге',
+        name_en: 'Akakage Shuriken',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/3/39/Weapon_Rare_Akakage_Shuriken.png',
@@ -577,7 +629,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 53,
-        name: 'Boulder Belt',
+        name_ua: 'Валуновий пояс',
+        name_en: 'Boulder Belt',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/97/Weapon_Normal_Boulder_Belt.png',
@@ -588,7 +641,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 54,
-        name: 'Boulder Belt',
+        name_ua: 'Валуновий пояс',
+        name_en: 'Boulder Belt',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/c/ce/Weapon_Rare_Boulder_Belt.png',
@@ -599,7 +653,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 55,
-        name: 'Demon\'s Scythe',
+        name_ua: 'Демонська коса',
+        name_en: 'Demon\'s Scythe',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/b7/Weapon_Normal_Demon%27s_Scythe.png',
@@ -610,7 +665,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 56,
-        name: 'Demon\'s Scythe',
+        name_ua: 'Демонська коса',
+        name_en: 'Demon\'s Scythe',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/bd/Weapon_Rare_Demon%27s_Scythe.png',
@@ -621,7 +677,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 57,
-        name: 'Explosive Meteor Hammer',
+        name_ua: 'Вибуховий метеоритний молот',
+        name_en: 'Explosive Meteor Hammer',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/2/22/Weapon_Normal_Explosive_Meteor_Hammer.png',
@@ -632,7 +689,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 58,
-        name: 'Explosive Meteor Hammer',
+        name_ua: 'Вибуховий метеоритний молот',
+        name_en: 'Explosive Meteor Hammer',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/f/f3/Weapon_Rare_Explosive_Meteor_Hammer.png',
@@ -643,7 +701,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 59,
-        name: 'Flamewind Scimitar',
+        name_ua: 'Ятаган Полум\'яного Вітру',
+        name_en: 'Flamewind Scimitar',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/9/92/Weapon_Normal_Flamewind_Scimitar.png',
@@ -654,7 +713,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 60,
-        name: 'Flamewind Scimitar',
+        name_ua: 'Ятаган Полум\'яного Вітру',
+        name_en: 'Flamewind Scimitar',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/b/ba/Weapon_Rare_Flamewind_Scimitar.png',
@@ -665,7 +725,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 61,
-        name: 'Knight\'s Shield',
+        name_ua: 'Лицарський щит',
+        name_en: 'Knight\'s Shield',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/c/c8/Weapon_Normal_Knight%27s_Shield.png',
@@ -676,7 +737,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 62,
-        name: 'Knight\'s Shield',
+        name_ua: 'Лицарський щит',
+        name_en: 'Knight\'s Shield',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/8/8d/Weapon_Rare_Knight%27s_Shield.png',
@@ -687,7 +749,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 63,
-        name: 'Moniyan Lance',
+        name_ua: 'Монійський спис',
+        name_en: 'Moniyan Lance',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/8/8e/Weapon_Normal_Moniyan_Lance.png',
@@ -698,7 +761,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 64,
-        name: 'Moniyan Lance',
+        name_ua: 'Монійський спис',
+        name_en: 'Moniyan Lance',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/7/76/Weapon_Rare_Moniyan_Lance.png',
@@ -709,7 +773,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 65,
-        name: 'Northern Vale Hammer',
+        name_ua: 'Молот Північної Долини',
+        name_en: 'Northern Vale Hammer',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/1/12/Weapon_Normal_Northern_Vale_Hammer.png',
@@ -720,7 +785,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 66,
-        name: 'Northern Vale Hammer',
+        name_ua: 'Молот Північної Долини',
+        name_en: 'Northern Vale Hammer',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/6/65/Weapon_Rare_Northern_Vale_Hammer.png',
@@ -731,7 +797,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 67,
-        name: 'Plains Boots',
+        name_ua: 'Рівнинні черевики',
+        name_en: 'Plains Boots',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/f/f7/Weapon_Normal_Plains_Boots.png',
@@ -742,7 +809,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 68,
-        name: 'Plains Boots',
+        name_ua: 'Рівнинні черевики',
+        name_en: 'Plains Boots',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/6/62/Weapon_Rare_Plains_Boots.png',
@@ -753,7 +821,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 69,
-        name: 'Silvermoon Bow & Arrows',
+        name_ua: 'Лук і стріли Срібної Луни',
+        name_en: 'Silvermoon Bow & Arrows',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/4/43/Weapon_Normal_Silvermoon_Bow_%26_Arrows.png',
@@ -764,7 +833,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 70,
-        name: 'Silvermoon Bow & Arrows',
+        name_ua: 'Лук і стріли Срібної Луни',
+        name_en: 'Silvermoon Bow & Arrows',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/6/63/Weapon_Rare_Silvermoon_Bow_%26_Arrows.png',
@@ -775,7 +845,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 71,
-        name: 'Stream Dagger',
+        name_ua: 'Кинджал Потоку',
+        name_en: 'Stream Dagger',
         rarity: ERarity.NORMAL,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/5/54/Weapon_Normal_Stream_Dagger.png',
@@ -786,7 +857,8 @@ export const Blocks: IBlock[] = [
     },
     {
         id: 72,
-        name: 'Stream Dagger',
+        name_ua: 'Кинджал Потоку',
+        name_en: 'Stream Dagger',
         rarity: ERarity.RARE,
         class: EClass.WEAPON,
         image: 'https://static.wikia.nocookie.net/mobile-legends-adventure/images/d/d1/Weapon_Rare_Stream_Dagger.png',

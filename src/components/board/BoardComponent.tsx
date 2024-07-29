@@ -7,12 +7,12 @@ export const BoardComponent: FC = () => {
 
     return (
         <div className="board">
-            {selectedBlocks.map(block => (
-                <div key={block.name}>
-                    <img src={block.image} alt={block.name} />
-                    <div>{block.name}</div>
-                </div>
-            ))}
+            {/*{selectedBlocks.map(block => (*/}
+            {/*    <div key={block.name}>*/}
+            {/*        <img src={block.image} alt={block.name} />*/}
+            {/*        <div>{block.name}</div>*/}
+            {/*    </div>*/}
+            {/*))}*/}
         </div>
     );
 };

@@ -1,0 +1,15 @@
+.Container {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+}
+
+.Container svg {
+    cursor: pointer;
+}
+
+.NonActive {
+    opacity: 50%
+}

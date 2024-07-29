@@ -3,7 +3,8 @@ import { EClass } from '../enums/class';
 
 export interface IBlock {
     id: number;
-    name: string;
+    name_ua: string;
+    name_en: string;
     rarity: ERarity;
     class: EClass;
     image: string;
