@@ -11,7 +11,7 @@ export const BlockComponent: FC<IProps> = ({block}) => {
 
     return (
         <div className={css.Container}>
-            <h3>{block.name}</h3>
+            <p>{block.name}</p>
             <img src={block.image} alt={block.name} width={block.width} height={block.height} />
             <div className={css.Buttons}>
                 <button disabled={count <= 0} onClick={() => setCount(count-1)}>-</button>

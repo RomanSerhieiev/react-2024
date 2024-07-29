@@ -21,13 +21,13 @@ export const SidebarComponent: FC<IProps> = ({ blocks }) => {
         <div className={css.Container}>
             <div className={css.Filters}>
                 <div className={css.ClassFilters}>
-                    <button onClick={() => setSelectedClass(EClass.ANTIQUE)} className={selectedClass === EClass.ANTIQUE ? css.Active : ''}>Antiques</button>
-                    <button onClick={() => setSelectedClass(EClass.FOOD)} className={selectedClass === EClass.FOOD ? css.Active : ''}>Foods</button>
-                    <button onClick={() => setSelectedClass(EClass.WEAPON)} className={selectedClass === EClass.WEAPON ? css.Active : ''}>Weapons</button>
+                    <button onClick={() => setSelectedClass(EClass.ANTIQUE)} className={selectedClass === EClass.ANTIQUE ? css.Active : ''}>ANTIQUES</button>
+                    <button onClick={() => setSelectedClass(EClass.FOOD)} className={selectedClass === EClass.FOOD ? css.Active : ''}>FOODS</button>
+                    <button onClick={() => setSelectedClass(EClass.WEAPON)} className={selectedClass === EClass.WEAPON ? css.Active : ''}>WEAPONS</button>
                 </div>
                 <div className={css.RarityFilters}>
-                    <button onClick={() => setSelectedRarity(ERarity.NORMAL)} className={selectedRarity === ERarity.NORMAL ? css.Active : ''}>Normal</button>
-                    <button onClick={() => setSelectedRarity(ERarity.RARE)} className={selectedRarity === ERarity.RARE ? css.Active : ''}>Rare</button>
+                    <button onClick={() => setSelectedRarity(ERarity.NORMAL)} className={selectedRarity === ERarity.NORMAL ? css.Active : ''}>NORMAL</button>
+                    <button onClick={() => setSelectedRarity(ERarity.RARE)} className={selectedRarity === ERarity.RARE ? css.Active : ''}>RARE</button>
                 </div>
             </div>
             <div className={css.Blocks}>

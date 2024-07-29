@@ -5,6 +5,8 @@
     border: #263e52 solid 4px;
     border-radius: 20px;
     justify-content: space-between;
+    height: calc(100vh - 20px);
+    box-sizing: border-box;
 }
 
 .ClassFilters {
@@ -30,7 +32,6 @@
     border: none;
     background: #263e52;
     color: white;
-    font-size: 17px;
     cursor: pointer;
 }
 
@@ -46,4 +47,24 @@
     flex-direction: column;
     gap: 10px;
     margin: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.Blocks::-webkit-scrollbar {
+    width: 10px;
+}
+
+.Blocks::-webkit-scrollbar-track {
+    background: rgba(38, 62, 82, 0.3);
+    border-radius: 5px;
+}
+
+.Blocks::-webkit-scrollbar-thumb {
+    background: rgba(38, 62, 82, 0.6);
+    border-radius: 10px;
+}
+
+.Blocks::-webkit-scrollbar-thumb:hover {
+    background: #263e52;
 }

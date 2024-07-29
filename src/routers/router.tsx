@@ -3,9 +3,11 @@ import MainLayout from '../layouts/main/MainLayout';
 import ErrorLayout from '../layouts/error/ErrorLayout';
 
 const routs: RouteObject[] = [{
-    path: 'https://romanserhieiev.github.io/react-2024/',
+    path: '/',
     element: <MainLayout />,
     errorElement: <ErrorLayout />,
 }]
 
-export const router = createBrowserRouter(routs);
+export const router = createBrowserRouter(routs, {
+    basename: '/react-2024'
+});

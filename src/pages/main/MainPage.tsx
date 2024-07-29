@@ -10,7 +10,9 @@ const MainPage: FC = () => {
     return (
         <div className={css.Container}>
             <SidebarComponent blocks={blocks} />
-            <BoardComponent />
+            <div>
+                <BoardComponent />
+            </div>
         </div>
     );
 };
