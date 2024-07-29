@@ -1,0 +1,49 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: #263e52 solid 4px;
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.ClassFilters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ClassFilters button:first-child {
+    border-radius: 14px 0 0 0;
+}
+
+.ClassFilters button:last-child {
+    border-radius: 0 14px 0 0;
+}
+
+.RarityFilters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.Filters button {
+    padding: 5px 10px;
+    border: none;
+    background: #263e52;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.Container button.Active {
+    font-weight: bold;
+    background: white;
+    color: #263e52;
+    border-bottom: #263e52 solid 1px;
+}
+
+.Blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+}
