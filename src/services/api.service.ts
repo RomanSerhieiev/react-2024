@@ -7,7 +7,7 @@ import { IToken } from '../interfaces/token.interface';
 export const apiService = axios.create({baseURL});
 
 apiService.interceptors.request.use(request => {
-    if (localStorage.getItem(tokenPair) && request.url !== url.auth.refresh && request.url !== url.auth.base) {
+    if (localStorage.getItem(tokenPair) && (request.url !== url.auth.refresh || request.url !== url.auth.base)) {
         request.headers.set('Authorization', `Bearer ${retrieveLocalStorageData<IToken>(tokenPair).access}`);
     }
 
