@@ -30,12 +30,10 @@ const SignUpComponent: FC = () => {
             {user ?
                 <div>You have successfully registered</div> :
                 <form onSubmit={handleSubmit(signUp)}>
-                    <label>Enter your username:
-                        <input type="text" {...register('username')} />
+                    <label>Enter your username: <input type="text" {...register('username')} />
                         {errors.username && <div className={css.Error}>{errors.username.message}</div>}
                     </label>
-                    <label>Enter your password:
-                        <input type="text" {...register('password')} />
+                    <label>Enter your password: <input type="text" {...register('password')} />
                         {errors.password && <div className={css.Error}>{errors.password.message}</div>}
                     </label>
                     <button>REGISTER</button>

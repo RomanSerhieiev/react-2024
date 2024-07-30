@@ -1,4 +1,6 @@
-export const retrieveLocalStorageData = <T>(key: string) => {
+import { EKey } from '../enums/local-storage-keys.enum';
+
+export const retrieveLocalStorageData = <T>(key: EKey) => {
     const pairJSON = localStorage.getItem(key) || '';
 
     if (!pairJSON) {

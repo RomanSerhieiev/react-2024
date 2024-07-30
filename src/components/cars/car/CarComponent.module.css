@@ -9,8 +9,9 @@
 }
 
 .Container h3 {
-    text-transform: uppercase;
     text-align: center;
+    white-space: nowrap;
+    margin: 0;
 }
 
 .Container button {

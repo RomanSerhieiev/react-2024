@@ -1,0 +1,9 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.Container input {
+    width: 50%;
+}

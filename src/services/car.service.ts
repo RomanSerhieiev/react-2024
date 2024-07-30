@@ -9,29 +9,29 @@ interface IPhoto {
 }
 
 export const carService = {
-    getAll: async (page: string = '1'): Promise<ICars | null> => {
-        const {data} = await apiService.get<ICars>(url.cars.base, {params: {page}});
+    getAll: async (page: string = '1', page_size: number = 10): Promise<ICars | null> => {
+        const {data} = await apiService.get<ICars>(url.cars.base, {params: {page, page_size}});
         return data;
     },
 
     create: async (car: ICar): Promise<ICarResponse | null> => {
-            const {data} = await apiService.post<ICarResponse>(url.cars.base, car);
-            return data;
+        const {data} = await apiService.post<ICarResponse>(url.cars.base, car);
+        return data;
     },
 
     getById: async (id: string): Promise<ICarResponse | null> => {
-            const {data} = await apiService.get<ICarResponse>(url.cars.byId(id));
-            return data;
+        const {data} = await apiService.get<ICarResponse>(url.cars.byId(id));
+        return data;
     },
 
     fullUpdateById: async (id: string, car: ICar): Promise<ICarResponse | null> => {
-            const {data} = await apiService.put<ICarResponse>(url.cars.byId(id), car);
-            return data;
+        const {data} = await apiService.put<ICarResponse>(url.cars.byId(id), car);
+        return data;
     },
 
     partialUpdateById: async (id: string, car: ICar): Promise<ICarResponse | null> => {
-            const {data} = await apiService.patch<ICarResponse>(url.cars.byId(id), car);
-            return data;
+        const {data} = await apiService.patch<ICarResponse>(url.cars.byId(id), car);
+        return data;
     },
 
     updatePhotoById: async (id: string, photo: IPhoto): Promise<ICarResponse | null> => {
@@ -45,8 +45,8 @@ export const carService = {
         return data;
     },
 
-    deleteById: async (id: string): Promise<void> => {
-            const {data} = await apiService.delete(url.cars.byId(id));
-            return data;
+    deleteById: async (id: string): Promise<boolean> => {
+        const {data} = await apiService.delete(url.cars.byId(id));
+        return !!data;
     },
 };

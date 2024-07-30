@@ -3,3 +3,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.TotalItems {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
