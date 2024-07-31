@@ -3,7 +3,8 @@ import { IPost } from '../interfaces/post.interface';
 
 export type TStore = {
     userStore: {
-        users: IUser[]
+        users: IUser[],
+        selectUser: (user: IUser) => void,
     },
     postStore: {
         posts: IPost[]

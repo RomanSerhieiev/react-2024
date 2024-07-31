@@ -3,7 +3,8 @@ import { createContext } from 'react';
 
 const defaultStore: TStore = {
     userStore: {
-        users: []
+        users: [],
+        selectUser: () => void {}
     },
     postStore: {
         posts: []

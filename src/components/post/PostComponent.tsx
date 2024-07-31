@@ -8,7 +8,7 @@ interface IProps {
 const PostComponent: FC<IProps> = ({post}) => {
     return (
         <ul>
-            <li>{post.id}. {post.title}</li>
+            <li>{post.title}</li>
         </ul>
     );
 };

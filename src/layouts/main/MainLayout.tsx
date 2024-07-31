@@ -10,17 +10,23 @@ import { postService } from '../../services/post.service';
 const MainLayout: FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
     const [posts, setPosts] = useState<IPost[]>([]);
+    const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
 
     useEffect(() => {
-        userService.getAll().then(value => setUsers(value.data))
-        postService.getAll().then(value => setPosts(value.data))
+        userService.getAll().then(value => setUsers(value.data));
+        postService.getAll().then(value => setPosts(value.data));
     }, []);
+
+    const selectUser = (user: IUser) => {
+        setSelectedUser(user);
+    };
 
     return (
         <Context.Provider value={
             {
                 userStore: {
-                    users
+                    users,
+                    selectUser,
                 },
                 postStore: {
                     posts
@@ -29,6 +35,7 @@ const MainLayout: FC = () => {
         }>
             <HeaderComponent />
             <Outlet />
+            {selectedUser && <div><hr />{selectedUser.email}</div>}
         </Context.Provider>
     );
 };
