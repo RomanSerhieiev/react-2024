@@ -1,28 +1,31 @@
 import React, { FC } from 'react';
-import css from './CarFilterComponent.module.css'
-import { ICars } from '../../../interfaces/cars.interface';
+import css from './CarFilterComponent.module.css';
 import { localStorageSave } from '../../../helpers/local-storage-save.helper';
 import { IPageSize } from '../../../interfaces/page-size.interface';
 import { EKey } from '../../../enums/local-storage-keys.enum';
-import { retrieveLocalStorageData } from '../../../helpers/retrieve-local-storage-data.helper';
 
 interface IProps {
-    cars: ICars,
+    pageSize: number,
     setTrigger: (trigger: boolean) => void
 }
 
-const CarFilterComponent: FC<IProps> = ({cars, setTrigger}) => {
-    const changeSize = (event: React.ChangeEvent<HTMLInputElement>) => {
-        localStorageSave<IPageSize>(EKey.pageSize, {pageSize: +event.target.value})
-        setTrigger(true)
-    }
+const CarFilterComponent: FC<IProps> = ({pageSize, setTrigger}) => {
+    const changeSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        localStorageSave<IPageSize>(EKey.pageSize, {pageSize: +event.target.value});
+        setTrigger(true);
+    };
 
     return (
-        <div className={css.Container}>
-            <div>Display on page:</div>
-            <input onChange={changeSize} type={'range'} min={1} max={cars.total_items} value={retrieveLocalStorageData<IPageSize>(EKey.pageSize).pageSize} />
-            <div>{retrieveLocalStorageData<IPageSize>(EKey.pageSize).pageSize}</div>
-        </div>
+        <form className={css.Container}>
+            <label>Display on page: {}
+                <select value={pageSize} onChange={changeSize}>
+                    <option value={25}>25</option>
+                    <option value={50}>50</option>
+                    <option value={75}>75</option>
+                    <option value={100}>100</option>
+                </select>
+            </label>
+        </form>
     );
 };
 

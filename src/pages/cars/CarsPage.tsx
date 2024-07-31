@@ -27,7 +27,7 @@ const CarsPage: FC = () => {
     });
     const [carForUpdate, setCarForUpdate] = useState<ICarResponse | null>(null);
     const [trigger, setTrigger] = useState<boolean>(false);
-    const [pageSize, setPageSize] = useState<number>(10);
+    const [pageSize, setPageSize] = useState<number>(25);
 
     useEffect(() => {
         const getCars = async () => {
@@ -68,7 +68,7 @@ const CarsPage: FC = () => {
         <div className={css.Container}>
             <div>
                 <CarFormComponent carForUpdate={carForUpdate} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger} />
-                <CarFilterComponent cars={cars} setTrigger={setTrigger} />
+                <CarFilterComponent setTrigger={setTrigger} pageSize={pageSize} />
                 <CarsComponent cars={cars.items} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger} />
             </div>
             <PaginationComponent next={cars.next} prev={cars.prev} />
