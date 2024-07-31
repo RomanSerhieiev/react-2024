@@ -41,6 +41,7 @@ const CarsPage: FC = () => {
                 const response = await carService.getAll(query.get('page') || '1', pageSize);
                 if (response) {
                     setCars({...response});
+                    console.log(response);
                 }
             } catch (e) {
                 const axiosError = e as AxiosError;
@@ -54,6 +55,7 @@ const CarsPage: FC = () => {
                     const response = await carService.getAll(query.get('page') || '1', pageSize);
                     if (response) {
                         setCars({...response});
+                        console.log(response);
                     }
                 }
             }
