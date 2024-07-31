@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
 import UserComponent from '../user/UserComponent';
+import { useStore } from '../../store/store';
 
 const UsersComponent: FC = () => {
-    const {userStore: {users}} = useAppContext()
+    const {userSlice: {users}} = useStore()
 
     return (
         <div>

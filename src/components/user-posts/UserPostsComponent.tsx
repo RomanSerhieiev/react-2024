@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import { useAppContext } from '../../hooks/useAppContext';
 import { TUserPosts } from '../../types/user-posts.type';
 import UserPostComponent from '../user-post/UserPostComponent';
+import { useStore } from '../../store/store';
 
 const UserPostsComponent: FC = () => {
-    const {userStore: {users}, postStore: {posts}} = useAppContext();
+    const {userSlice: {users}, postSlice: {posts}} = useStore();
     const [userPosts, setUserPosts] = useState<TUserPosts[]>([]);
 
     const combineUserPosts =  useMemo(() => {

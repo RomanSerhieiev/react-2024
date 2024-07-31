@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import css from './UserComponent.module.css'
+import css from './UserComponent.module.css';
 import { IUser } from '../../interfaces/user.interface';
-import { useAppContext } from '../../hooks/useAppContext';
+import { useStore } from '../../store/store';
 
 interface IProps {
     user: IUser
 }
 
 const UserComponent: FC<IProps> = ({user}) => {
-    const {userStore: {selectUser}} = useAppContext()
+    const {userSlice: {selectUser}} = useStore()
 
     return (
         <div className={css.Container}>
