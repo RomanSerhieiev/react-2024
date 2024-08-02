@@ -1,4 +1,4 @@
 import { useSelector } from 'react-redux';
-import { TRootState } from '../types/root-state.type';
+import { TAppSelector } from '../types/app-selector.type';
 
-export const useAppSelector = useSelector.withTypes <TRootState>();
+export const useAppSelector = useSelector.withTypes <TAppSelector>();

@@ -1,19 +1,24 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import './App.css';
 import { useAppDispatch } from './hooks/useAppDispatch';
 import { useAppSelector } from './hooks/useAppSelector';
-import { decrement, increment, incrementByAmount } from './redux/slices/counter1-slice';
+import { userActions } from './redux/slices/user.slice';
+import { postActions } from './redux/slices/post.slice';
 
 const App: FC = () => {
-    const counter1ValueState = useAppSelector(state => state.counter1Slice.value)
+    const {userSlice: {users}, postSlice: {posts}} = useAppSelector(state => state)
     const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(userActions.loadUsers())
+        dispatch(postActions.loadPosts())
+    }, [])
 
     return (
         <div>
-            <h2>{counter1ValueState}</h2>
-            <button onClick={() => dispatch(increment())}>do increment</button>
-            <button onClick={() => dispatch(decrement())}>do increment</button>
-            <button onClick={() => dispatch(incrementByAmount(10))}>do increment by amount of 10</button>
+            {users.map(user => <div key={user.id}>{user.id}. {user.name}</div>)}
+            <hr/>
+            {posts.map(post => <div key={post.id}>{post.id}. {post.title}</div>)}
         </div>
     );
 };
