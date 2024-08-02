@@ -19,5 +19,8 @@ export interface IUser {
         name: string,
         catchPhrase: string,
         bs: string
-    }
+    },
+    albumsIds: number[],
+    postsIds: number[],
+    todosIds: number[],
 }

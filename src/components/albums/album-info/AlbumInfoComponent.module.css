@@ -1,0 +1,53 @@
+.Container h2, h3, h4 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.AlbumContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.AlbumContainer h3 {
+    text-transform: uppercase;
+}
+
+.AlbumContainer button {
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    background: #263e52;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.PhotosContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.PhotoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: #263e52 solid 4px;
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.PhotoContainer button {
+    padding: 10px 20px;
+    border: none;
+    background: #263e52;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
