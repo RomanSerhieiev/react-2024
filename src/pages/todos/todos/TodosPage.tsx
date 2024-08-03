@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import css from './TodosPage.module.css';
+import css from '../../styles/ItemsPage.module.css';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import TodosComponent from '../../../components/todos/todos/TodosComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
@@ -7,7 +7,15 @@ import { EKey } from '../../../enums/local-storage-keys.enum';
 import { useStore } from '../../../store/store';
 
 const TodosPage: FC = () => {
-    const {todoSlice: {todosPageSize, setTodosPageSize, todos, todosPage, setTodosPage}} = useStore()
+    const {
+        todoSlice: {
+            todosPageSize,
+            setTodosPageSize,
+            todos,
+            todosPage,
+            setTodosPage
+        }
+    } = useStore();
 
     return (
         <div className={css.Container}>

@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
-import css from './PhotosComponent.module.css';
+import css from '../../styles/ItemsComponent.module.css';
 import PhotoComponent from '../photo/PhotoComponent';
 import { useStore } from '../../../store/store';
 
 const PhotosComponent: FC = () => {
-    const {photoSlice: {photos, photosPage}} = useStore()
+    const {
+        photoSlice: {photos, photosPage}
+    } = useStore();
 
     return (
         <div className={css.Container}>

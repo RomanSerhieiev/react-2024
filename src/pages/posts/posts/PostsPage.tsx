@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import css from './PostsPage.module.css';
+import css from '../../styles/ItemsPage.module.css';
 import PostsComponent from '../../../components/posts/posts/PostsComponent';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
@@ -7,7 +7,15 @@ import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 
 const PostsPage: FC = () => {
-    const {postSlice: {postsPageSize, setPostsPageSize, posts, postsPage, setPostsPage}} = useStore()
+    const {
+        postSlice: {
+            postsPageSize,
+            setPostsPageSize,
+            posts,
+            postsPage,
+            setPostsPage
+        }
+    } = useStore();
 
     return (
         <div className={css.Container}>

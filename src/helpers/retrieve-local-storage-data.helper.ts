@@ -10,4 +10,4 @@ export const retrieveLocalStorageData = <T>(key: EKey) => {
     const data = JSON.parse(dataJSON);
 
     return data as T;
-}
+};

@@ -1,9 +1,0 @@
-.Container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.Container h1 {
-    text-align: center;
-}

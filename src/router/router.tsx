@@ -21,12 +21,9 @@ const routs: RouteObject[] = [
         errorElement: <ErrorLayout />,
         children: [
             {
+                path: 'users',
                 element: <UsersPage />,
                 index: true,
-            },
-            {
-                path: 'users',
-                element: <UsersPage />
             },
             {
                 path: 'users/:userId',
@@ -76,4 +73,4 @@ const routs: RouteObject[] = [
     }
 ];
 
-export const router = createBrowserRouter(routs)
+export const router = createBrowserRouter(routs);

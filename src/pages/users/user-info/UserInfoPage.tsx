@@ -1,21 +1,18 @@
 import React, { FC } from 'react';
-import css from './UserInfoPage.module.css'
+import css from '../../styles/ItemInfoPage.module.css';
 import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import UserInfoComponent from '../../../components/users/user-info/UserInfoComponent';
-import { localStorageSave } from '../../../helpers/local-storage-save.helper';
-import { retrieveLocalStorageData } from '../../../helpers/retrieve-local-storage-data.helper';
-import { EKey } from '../../../enums/local-storage-keys.enum';
 
 const UserInfoPage: FC = () => {
     const {
-        userSlice: {users, setSelectedUser},
+        userSlice: {users},
         albumSlice: {albums},
         postSlice: {posts},
         todoSlice: {todos}
-    } = useStore()
+    } = useStore();
 
-    const { userId = '1' } = useParams()
+    const {userId = '1'} = useParams();
 
     const user = users.flat().find(user => user.id === +userId);
     const userAlbums = albums.flat().filter(album => user?.albumsIds.includes(album.id));

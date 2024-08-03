@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import css from './MainLayout.module.css'
+import css from './MainLayout.module.css';
 import { Outlet } from 'react-router-dom';
 import HeaderComponent from '../../components/header/HeaderComponent';
 import { useStore } from '../../store/store';
@@ -18,12 +18,12 @@ import { IComment } from '../../interfaces/comment.interface';
 
 const MainLayout: FC = () => {
     const {
-        albumSlice: {albumsPageSize, getAlbums},
-        commentSlice: {commentsPageSize, getComments},
-        photoSlice: {photosPageSize, getPhotos},
-        postSlice: {postsPageSize, getPosts},
-        todoSlice: {todosPageSize, getTodos},
-        userSlice: {usersPageSize, getUsers},
+        albumSlice: {albums, albumsPageSize, getAlbums},
+        commentSlice: {comments, commentsPageSize, getComments},
+        photoSlice: {photos, photosPageSize, getPhotos},
+        postSlice: {posts, postsPageSize, getPosts},
+        todoSlice: {todos, todosPageSize, getTodos},
+        userSlice: {users, usersPageSize, getUsers},
     } = useStore();
 
     const updateUserRelations = (
@@ -86,7 +86,31 @@ const MainLayout: FC = () => {
             getPosts(updatedPosts);
             getUsers(updatedUsers);
         });
-    }, [albumsPageSize, commentsPageSize, photosPageSize, postsPageSize, todosPageSize, usersPageSize]);
+    }, []);
+
+    useEffect(() => {
+        getAlbums(albums.flat());
+    }, [albumsPageSize]);
+
+    useEffect(() => {
+        getComments(comments.flat());
+    }, [commentsPageSize]);
+
+    useEffect(() => {
+        getPhotos(photos.flat());
+    }, [photosPageSize]);
+
+    useEffect(() => {
+        getPosts(posts.flat());
+    }, [postsPageSize]);
+
+    useEffect(() => {
+        getTodos(todos.flat());
+    }, [todosPageSize]);
+
+    useEffect(() => {
+        getUsers(users.flat());
+    }, [usersPageSize]);
 
     return (
         <div className={css.Container}>

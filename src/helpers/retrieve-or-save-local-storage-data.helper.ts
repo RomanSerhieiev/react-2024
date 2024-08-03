@@ -4,9 +4,9 @@ import { localStorageSave } from './local-storage-save.helper';
 
 export const retrieveOrSaveLocalStorageData = (key: EKey, defaultValue: number): number => {
     if (retrieveLocalStorageData<number>(key)) {
-        return retrieveLocalStorageData<number>(key)
+        return retrieveLocalStorageData<number>(key);
     } else {
-        localStorageSave(key, defaultValue)
-        return retrieveLocalStorageData<number>(key)
+        localStorageSave(key, defaultValue);
+        return retrieveLocalStorageData<number>(key);
     }
 };

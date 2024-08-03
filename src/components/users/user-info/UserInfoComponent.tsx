@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import css from './UserInfoComponent.module.css';
+import css from '../../styles/ItemInfoComponent.module.css';
 import { IUser } from '../../../interfaces/user.interface';
 import { IAlbum } from '../../../interfaces/album.interface';
 import { ITodo } from '../../../interfaces/todo.interface';
@@ -22,7 +22,7 @@ const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
         albumSlice: {setSelectedAlbum},
         postSlice: {setSelectedPost},
         todoSlice: {setSelectedTodo},
-    } = useStore()
+    } = useStore();
 
     const navigate = useNavigate();
 
@@ -31,7 +31,6 @@ const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
         id: number,
         endpoint: string,
         setter: (retriever: number) => void,
-
     ) => {
         localStorageSave<number>(key, id);
         setter(retrieveLocalStorageData<number>(key));
@@ -65,27 +64,27 @@ const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
                 </div>
             </div>
             <h3>{user.name}'s albums</h3>
-            <div className={css.AlbumsContainer}>
+            <div className={css.ItemsContainer}>
                 {albums.map(album => (
-                    <div className={css.AlbumContainer} key={album.id}>
+                    <div className={css.ItemContainer} key={album.id}>
                         <h4>{album.id}. {album.title}</h4>
                         <button onClick={() => handleNavigate(EKey.selectedAlbum, album.id, '/albums', setSelectedAlbum)}>INFO</button>
                     </div>
                 ))}
             </div>
             <h3>{user.name}'s posts</h3>
-            <div className={css.PostsContainer}>
+            <div className={css.ItemsContainer}>
                 {posts.map(post => (
-                    <div className={css.PostContainer} key={post.id}>
+                    <div className={css.ItemContainer} key={post.id}>
                         <h4>{post.id}. {post.title}</h4>
                         <button onClick={() => handleNavigate(EKey.selectedPost, post.id, '/posts', setSelectedPost)}>INFO</button>
                     </div>
                 ))}
             </div>
             <h3>{user.name}'s todos</h3>
-            <div className={css.TodosContainer}>
+            <div className={css.ItemsContainer}>
                 {todos.map(todo => (
-                    <div className={css.TodoContainer} key={todo.id}>
+                    <div className={css.ItemContainer} key={todo.id}>
                         <h4>{todo.id}. {todo.title}</h4>
                         <button onClick={() => handleNavigate(EKey.selectedTodo, todo.id, '/todos', setSelectedTodo)}>INFO</button>
                     </div>

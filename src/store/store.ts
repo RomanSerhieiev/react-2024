@@ -8,12 +8,15 @@ import { IPhoto } from '../interfaces/photo.interface';
 import { ITodo } from '../interfaces/todo.interface';
 import { EKey } from '../enums/local-storage-keys.enum';
 import { retrieveOrSaveLocalStorageData } from '../helpers/retrieve-or-save-local-storage-data.helper';
+import { localStorageSave } from '../helpers/local-storage-save.helper';
 
 const divideItemsByPageSize = <T>(items: T[], pageSize: number): T[][] => {
     const result: T[][] = [];
+
     for (let i = 0; i < items.length; i += pageSize) {
         result.push(items.slice(i, i + pageSize));
     }
+
     return result;
 };
 
@@ -26,21 +29,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.albumSlice,
                     albumsPage
                 }
-            }))
+            }));
         },
         albumsPageSize: retrieveOrSaveLocalStorageData(EKey.albumsPageSize, 25),
         setAlbumsPageSize: (albumsPageSize: number) => {
+            localStorageSave(EKey.albumsPage, 1);
             set(state => ({
                 albumSlice: {
                     ...state.albumSlice,
                     albumsPageSize,
                     albumsPage: 1
                 }
-            }))
+            }));
         },
         albums: [],
         getAlbums: (albumsBeforeDivide: IAlbum[]) => {
-            const { albumsPageSize } = useStore.getState().albumSlice;
+            const {albumsPageSize} = useStore.getState().albumSlice;
             const albums = divideItemsByPageSize(albumsBeforeDivide, albumsPageSize);
             set(state => ({
                 albumSlice: {
@@ -56,7 +60,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.albumSlice,
                     selectedAlbum
                 }
-            }))
+            }));
         },
     },
     commentSlice: {
@@ -67,21 +71,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.commentSlice,
                     commentsPage
                 }
-            }))
+            }));
         },
         commentsPageSize: retrieveOrSaveLocalStorageData(EKey.commentsPageSize, 25),
         setCommentsPageSize: (commentsPageSize: number) => {
+            localStorageSave(EKey.commentsPage, 1);
             set(state => ({
                 commentSlice: {
                     ...state.commentSlice,
                     commentsPageSize,
                     commentsPage: 1
                 }
-            }))
+            }));
         },
         comments: [],
         getComments: (commentsBeforeDivide: IComment[]) => {
-            const { commentsPageSize } = useStore.getState().commentSlice;
+            const {commentsPageSize} = useStore.getState().commentSlice;
             const comments = divideItemsByPageSize(commentsBeforeDivide, commentsPageSize);
             set(state => ({
                 commentSlice: {
@@ -97,7 +102,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.commentSlice,
                     selectedComment
                 }
-            }))
+            }));
         },
     },
     photoSlice: {
@@ -108,21 +113,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.photoSlice,
                     photosPage
                 }
-            }))
+            }));
         },
         photosPageSize: retrieveOrSaveLocalStorageData(EKey.photosPageSize, 25),
         setPhotosPageSize: (photosPageSize: number) => {
+            localStorageSave(EKey.photosPage, 1);
             set(state => ({
                 photoSlice: {
                     ...state.photoSlice,
                     photosPageSize,
                     photosPage: 1
                 }
-            }))
+            }));
         },
         photos: [],
         getPhotos: (photosBeforeDivide: IPhoto[]) => {
-            const { photosPageSize } = useStore.getState().photoSlice;
+            const {photosPageSize} = useStore.getState().photoSlice;
             const photos = divideItemsByPageSize(photosBeforeDivide, photosPageSize);
             set(state => ({
                 photoSlice: {
@@ -138,7 +144,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.photoSlice,
                     selectedPhoto
                 }
-            }))
+            }));
         },
     },
     postSlice: {
@@ -149,21 +155,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.postSlice,
                     postsPage
                 }
-            }))
+            }));
         },
         postsPageSize: retrieveOrSaveLocalStorageData(EKey.postsPageSize, 25),
         setPostsPageSize: (postsPageSize: number) => {
+            localStorageSave(EKey.postsPage, 1);
             set(state => ({
                 postSlice: {
                     ...state.postSlice,
                     postsPageSize,
                     postsPage: 1
                 }
-            }))
+            }));
         },
         posts: [],
         getPosts: (postsBeforeDivide: IPost[]) => {
-            const { postsPageSize } = useStore.getState().postSlice;
+            const {postsPageSize} = useStore.getState().postSlice;
             const posts = divideItemsByPageSize(postsBeforeDivide, postsPageSize);
             set(state => ({
                 postSlice: {
@@ -179,7 +186,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.postSlice,
                     selectedPost
                 }
-            }))
+            }));
         },
     },
     todoSlice: {
@@ -190,21 +197,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.todoSlice,
                     todosPage
                 }
-            }))
+            }));
         },
         todosPageSize: retrieveOrSaveLocalStorageData(EKey.todosPageSize, 25),
         setTodosPageSize: (todosPageSize: number) => {
+            localStorageSave(EKey.todosPage, 1);
             set(state => ({
                 todoSlice: {
                     ...state.todoSlice,
                     todosPageSize,
                     todosPage: 1
                 }
-            }))
+            }));
         },
         todos: [],
         getTodos: (todosBeforeDivide: ITodo[]) => {
-            const { todosPageSize } = useStore.getState().todoSlice;
+            const {todosPageSize} = useStore.getState().todoSlice;
             const todos = divideItemsByPageSize(todosBeforeDivide, todosPageSize);
             set(state => ({
                 todoSlice: {
@@ -220,7 +228,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.todoSlice,
                     selectedTodo
                 }
-            }))
+            }));
         },
     },
     userSlice: {
@@ -231,21 +239,22 @@ export const useStore = create<IStore>(set => ({
                     ...state.userSlice,
                     usersPage
                 }
-            }))
+            }));
         },
         usersPageSize: retrieveOrSaveLocalStorageData(EKey.usersPageSize, 25),
         setUsersPageSize: (usersPageSize: number) => {
+            localStorageSave(EKey.usersPage, 1);
             set(state => ({
                 userSlice: {
                     ...state.userSlice,
                     usersPageSize,
                     usersPage: 1
                 }
-            }))
+            }));
         },
         users: [],
         getUsers: (usersBeforeDivide: IUser[]) => {
-            const { usersPageSize } = useStore.getState().userSlice;
+            const {usersPageSize} = useStore.getState().userSlice;
             const users = divideItemsByPageSize(usersBeforeDivide, usersPageSize);
             set(state => ({
                 userSlice: {
@@ -261,7 +270,7 @@ export const useStore = create<IStore>(set => ({
                     ...state.userSlice,
                     selectedUser
                 }
-            }))
+            }));
         },
     },
 }));

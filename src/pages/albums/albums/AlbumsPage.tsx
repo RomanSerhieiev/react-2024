@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import css from './AlbumsPage.module.css';
+import css from '../../styles/ItemsPage.module.css';
 import AlbumsComponent from '../../../components/albums/albums/AlbumsComponent';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
@@ -7,7 +7,15 @@ import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 
 const AlbumsPage: FC = () => {
-    const {albumSlice: {albumsPageSize, setAlbumsPageSize, albums, albumsPage, setAlbumsPage}} = useStore()
+    const {
+        albumSlice: {
+            albumsPageSize,
+            setAlbumsPageSize,
+            albums,
+            albumsPage,
+            setAlbumsPage
+        }
+    } = useStore();
 
     return (
         <div className={css.Container}>

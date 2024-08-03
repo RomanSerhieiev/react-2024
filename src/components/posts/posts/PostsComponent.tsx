@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
-import css from './PostsComponent.module.css';
+import css from '../../styles/ItemsComponent.module.css';
 import PostComponent from '../post/PostComponent';
 import { useStore } from '../../../store/store';
 
 const PostsComponent: FC = () => {
-    const {postSlice: {posts, postsPage}} = useStore()
+    const {
+        postSlice: {posts, postsPage}
+    } = useStore();
 
     return (
         <div className={css.Container}>

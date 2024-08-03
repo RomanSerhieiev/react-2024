@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
-import css from './TodosComponent.module.css';
+import css from '../../styles/ItemsComponent.module.css';
 import TodoComponent from '../todo/TodoComponent';
 import { useStore } from '../../../store/store';
 
 const TodosComponent: FC = () => {
-    const {todoSlice: {todos, todosPage}} = useStore()
+    const {
+        todoSlice: {todos, todosPage}
+    } = useStore();
 
     return (
         <div className={css.Container}>
