@@ -3,10 +3,10 @@ import css from '../../styles/ItemInfoComponent.module.css';
 import { IPost } from '../../../interfaces/post.interface';
 import { IUser } from '../../../interfaces/user.interface';
 import { IComment } from '../../../interfaces/comment.interface';
-import { useStore } from '../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { navigateHelper } from '../../../helpers/navigate.helper';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     post: IPost,
@@ -18,7 +18,7 @@ const PostInfoComponent: FC<IProps> = ({post, user, comments}) => {
     const {
         userSlice: {setSelectedUser},
         commentSlice: {setSelectedComment},
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

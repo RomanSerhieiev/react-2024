@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import PostInfoComponent from '../../../components/posts/post-info/PostInfoComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const PostInfoPage: FC = () => {
     const {
         userSlice: {users},
         postSlice: {posts},
         commentSlice: {comments}
-    } = useStore();
+    } = useAppContext();
 
     const {postId = '1'} = useParams();
 

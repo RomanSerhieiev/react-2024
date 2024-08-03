@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import PhotoInfoComponent from '../../../components/photos/photo-info/PhotoInfoComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const PhotoInfoPage: FC = () => {
     const {
         albumSlice: {albums},
         photoSlice: {photos}
-    } = useStore();
+    } = useAppContext();
 
     const {photoId = '1'} = useParams();
 

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemsComponent.module.css';
 import TodoComponent from '../todo/TodoComponent';
-import { useStore } from '../../../store/store';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const TodosComponent: FC = () => {
     const {
         todoSlice: {todos, todosPage}
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

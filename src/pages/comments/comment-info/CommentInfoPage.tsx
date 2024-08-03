@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import CommentInfoComponent from '../../../components/comments/comment-info/CommentInfoComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const CommentInfoPage: FC = () => {
     const {
         commentSlice: {comments},
         postSlice: {posts},
-    } = useStore();
+    } = useAppContext();
 
     const {commentId = '1'} = useParams();
 

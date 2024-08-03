@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemsComponent.module.css';
 import AlbumComponent from '../album/AlbumComponent';
-import { useStore } from '../../../store/store';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const AlbumsComponent: FC = () => {
     const {
         albumSlice: {albums, albumsPage}
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

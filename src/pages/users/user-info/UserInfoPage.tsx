@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import UserInfoComponent from '../../../components/users/user-info/UserInfoComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const UserInfoPage: FC = () => {
     const {
@@ -10,7 +10,7 @@ const UserInfoPage: FC = () => {
         albumSlice: {albums},
         postSlice: {posts},
         todoSlice: {todos}
-    } = useStore();
+    } = useAppContext();
 
     const {userId = '1'} = useParams();
 

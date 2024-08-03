@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemComponent.module.css';
 import { useNavigate } from 'react-router-dom';
 import { IComment } from '../../../interfaces/comment.interface';
-import { useStore } from '../../../store/store';
 import { navigateHelper } from '../../../helpers/navigate.helper';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     comment: IComment;
@@ -13,7 +13,7 @@ interface IProps {
 const CommentComponent: FC<IProps> = ({comment}) => {
     const {
         commentSlice: {setSelectedComment}
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

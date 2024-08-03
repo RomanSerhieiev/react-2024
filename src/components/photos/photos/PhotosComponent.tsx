@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemsComponent.module.css';
 import PhotoComponent from '../photo/PhotoComponent';
-import { useStore } from '../../../store/store';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const PhotosComponent: FC = () => {
     const {
         photoSlice: {photos, photosPage}
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

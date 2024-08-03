@@ -3,8 +3,8 @@ import css from '../../styles/ItemsPage.module.css';
 import UsersComponent from '../../../components/users/users/UsersComponent';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const UsersPage: FC = () => {
     const {
@@ -15,7 +15,7 @@ const UsersPage: FC = () => {
             usersPage,
             setUsersPage
         }
-    } = useStore();
+    } = useAppContext()
 
     return (
         <div className={css.Container}>

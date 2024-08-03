@@ -4,7 +4,7 @@ import FiltrationComponent from '../../../components/filtration/FiltrationCompon
 import TodosComponent from '../../../components/todos/todos/TodosComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
 import { EKey } from '../../../enums/local-storage-keys.enum';
-import { useStore } from '../../../store/store';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const TodosPage: FC = () => {
     const {
@@ -15,7 +15,7 @@ const TodosPage: FC = () => {
             todosPage,
             setTodosPage
         }
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

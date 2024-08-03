@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemInfoComponent.module.css';
 import { IAlbum } from '../../../interfaces/album.interface';
 import { IPhoto } from '../../../interfaces/photo.interface';
-import { useStore } from '../../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 import { navigateHelper } from '../../../helpers/navigate.helper';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     album: IAlbum,
@@ -15,15 +15,17 @@ interface IProps {
 const PhotoInfoComponent: FC<IProps> = ({album, photo}) => {
     const {
         albumSlice: {setSelectedAlbum},
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 
     return (
-        <div className={css.MainContainer}>
-            <h3>{photo.id}. {photo.title}</h3>
-            <img src={photo.url} alt={photo.title} />
-            <p>ALBUM: <button onClick={() => navigateHelper(EKey.selectedAlbum, album.id, `/albums`, setSelectedAlbum, navigate)}>{album.title}</button></p>
+        <div className={css.Container}>
+            <div className={css.MainContainer}>
+                <h2>{photo.id}. {photo.title}</h2>
+                <img src={photo.url} alt={photo.title} />
+                <p>ALBUM: <button onClick={() => navigateHelper(EKey.selectedAlbum, album.id, `/albums`, setSelectedAlbum, navigate)}>{album.title}</button></p>
+            </div>
         </div>
     );
 };

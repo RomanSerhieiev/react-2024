@@ -3,8 +3,8 @@ import css from '../../styles/ItemsPage.module.css';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import CommentsComponent from '../../../components/comments/comments/CommentsComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const CommentsPage: FC = () => {
     const {
@@ -15,7 +15,7 @@ const CommentsPage: FC = () => {
             commentsPage,
             setCommentsPage
         }
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

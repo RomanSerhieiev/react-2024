@@ -16,14 +16,17 @@ import TodoInfoPage from '../pages/todos/todo-info/TodoInfoPage';
 
 const routs: RouteObject[] = [
     {
-        path: '',
+        path: '/',
         element: <MainLayout />,
         errorElement: <ErrorLayout />,
         children: [
             {
+                index: true,
+                element: <UsersPage />,
+            },
+            {
                 path: 'users',
                 element: <UsersPage />,
-                index: true,
             },
             {
                 path: 'users/:userId',

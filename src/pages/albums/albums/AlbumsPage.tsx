@@ -3,8 +3,8 @@ import css from '../../styles/ItemsPage.module.css';
 import AlbumsComponent from '../../../components/albums/albums/AlbumsComponent';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const AlbumsPage: FC = () => {
     const {
@@ -15,7 +15,7 @@ const AlbumsPage: FC = () => {
             albumsPage,
             setAlbumsPage
         }
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

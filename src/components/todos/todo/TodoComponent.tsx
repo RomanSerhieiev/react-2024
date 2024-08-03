@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemComponent.module.css';
 import { ITodo } from '../../../interfaces/todo.interface';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../../store/store';
 import { navigateHelper } from '../../../helpers/navigate.helper';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     todo: ITodo;
@@ -13,7 +13,7 @@ interface IProps {
 const TodoComponent: FC<IProps> = ({todo}) => {
     const {
         todoSlice: {setSelectedTodo}
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

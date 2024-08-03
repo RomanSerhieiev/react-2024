@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemComponent.module.css';
 import { IAlbum } from '../../../interfaces/album.interface';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 import { navigateHelper } from '../../../helpers/navigate.helper';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     album: IAlbum;
@@ -13,7 +13,7 @@ interface IProps {
 const AlbumComponent: FC<IProps> = ({album}) => {
     const {
         albumSlice: {setSelectedAlbum}
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

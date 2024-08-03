@@ -5,10 +5,10 @@ import { IAlbum } from '../../../interfaces/album.interface';
 import { ITodo } from '../../../interfaces/todo.interface';
 import { IPost } from '../../../interfaces/post.interface';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 import { localStorageSave } from '../../../helpers/local-storage-save.helper';
 import { retrieveLocalStorageData } from '../../../helpers/retrieve-local-storage-data.helper';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     user: IUser,
@@ -22,7 +22,7 @@ const UserInfoComponent: FC<IProps> = ({user, albums, posts, todos}) => {
         albumSlice: {setSelectedAlbum},
         postSlice: {setSelectedPost},
         todoSlice: {setSelectedTodo},
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

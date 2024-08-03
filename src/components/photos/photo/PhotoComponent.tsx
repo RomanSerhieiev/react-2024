@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemComponent.module.css';
 import { IPhoto } from '../../../interfaces/photo.interface';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../../store/store';
 import { navigateHelper } from '../../../helpers/navigate.helper';
 import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     photo: IPhoto;
@@ -13,7 +13,7 @@ interface IProps {
 const PhotoComponent: FC<IProps> = ({photo}) => {
     const {
         photoSlice: {setSelectedPhoto}
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 

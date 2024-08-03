@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemsComponent.module.css';
-import { useStore } from '../../../store/store';
 import CommentComponent from '../comment/CommentComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const CommentsComponent: FC = () => {
     const {
         commentSlice: {comments, commentsPage}
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

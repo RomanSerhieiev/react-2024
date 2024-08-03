@@ -3,7 +3,7 @@ import css from './HeaderComponent.module.css';
 import { NavLink } from 'react-router-dom';
 import { retrieveLocalStorageData } from '../../helpers/retrieve-local-storage-data.helper';
 import { EKey } from '../../enums/local-storage-keys.enum';
-import { useStore } from '../../store/store';
+import { useAppContext } from '../../hooks/useAppContext';
 
 const HeaderComponent: FC = () => {
     const {
@@ -13,18 +13,18 @@ const HeaderComponent: FC = () => {
         postSlice: {posts},
         todoSlice: {todos},
         userSlice: {users},
-    } = useStore()
+    } = useAppContext();
 
-    const album = albums.flat().find(album => album.id === retrieveLocalStorageData<number>(EKey.selectedAlbum))
-    const comment = comments.flat().find(comment => comment.id === retrieveLocalStorageData<number>(EKey.selectedComment))
-    const photo = photos.flat().find(photo => photo.id === retrieveLocalStorageData<number>(EKey.selectedPhoto))
-    const post = posts.flat().find(post => post.id === retrieveLocalStorageData<number>(EKey.selectedPost))
-    const todo = todos.flat().find(todo => todo.id === retrieveLocalStorageData<number>(EKey.selectedTodo))
-    const user = users.flat().find(user => user.id === retrieveLocalStorageData<number>(EKey.selectedUser))
+    const album = albums.flat().find(album => album.id === retrieveLocalStorageData<number>(EKey.selectedAlbum));
+    const comment = comments.flat().find(comment => comment.id === retrieveLocalStorageData<number>(EKey.selectedComment));
+    const photo = photos.flat().find(photo => photo.id === retrieveLocalStorageData<number>(EKey.selectedPhoto));
+    const post = posts.flat().find(post => post.id === retrieveLocalStorageData<number>(EKey.selectedPost));
+    const todo = todos.flat().find(todo => todo.id === retrieveLocalStorageData<number>(EKey.selectedTodo));
+    const user = users.flat().find(user => user.id === retrieveLocalStorageData<number>(EKey.selectedUser));
 
     return (
         <div className={css.Container}>
-            <div  className={css.Buttons}>
+            <div className={css.Buttons}>
                 <NavLink to={'albums'}>
                     <button className={css.MainButton}>ALBUMS</button>
                 </NavLink>
@@ -32,7 +32,7 @@ const HeaderComponent: FC = () => {
                   <button className={css.SecondaryButton}>{album.id}. {album.title.slice(0, 17)}</button>
                 </NavLink>}
             </div>
-            <div  className={css.Buttons}>
+            <div className={css.Buttons}>
                 <NavLink to={'comments'}>
                     <button className={css.MainButton}>COMMENTS</button>
                 </NavLink>
@@ -40,7 +40,7 @@ const HeaderComponent: FC = () => {
                   <button className={css.SecondaryButton}>{comment.id}. {comment.name.slice(0, 17)}</button>
                 </NavLink>}
             </div>
-            <div  className={css.Buttons}>
+            <div className={css.Buttons}>
                 <NavLink to={'photos'}>
                     <button className={css.MainButton}>PHOTOS</button>
                 </NavLink>
@@ -48,7 +48,7 @@ const HeaderComponent: FC = () => {
                   <button className={css.SecondaryButton}>{photo.id}. {photo.title.slice(0, 17)}</button>
                 </NavLink>}
             </div>
-            <div  className={css.Buttons}>
+            <div className={css.Buttons}>
                 <NavLink to={'posts'}>
                     <button className={css.MainButton}>POSTS</button>
                 </NavLink>
@@ -56,7 +56,7 @@ const HeaderComponent: FC = () => {
                   <button className={css.SecondaryButton}>{post.id}. {post.title.slice(0, 17)}</button>
                 </NavLink>}
             </div>
-            <div  className={css.Buttons}>
+            <div className={css.Buttons}>
                 <NavLink to={'todos'}>
                     <button className={css.MainButton}>TODOS</button>
                 </NavLink>
@@ -69,7 +69,7 @@ const HeaderComponent: FC = () => {
                     <button className={css.MainButton}>USERS</button>
                 </NavLink>
                 {user && <NavLink to={`users/${user.id}`}>
-                    <button className={css.SecondaryButton}>{user.id}. {user.name.slice(0, 17)}</button>
+                  <button className={css.SecondaryButton}>{user.id}. {user.name.slice(0, 17)}</button>
                 </NavLink>}
             </div>
         </div>

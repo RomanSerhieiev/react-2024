@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import css from './MainLayout.module.css';
 import { Outlet } from 'react-router-dom';
 import HeaderComponent from '../../components/header/HeaderComponent';
-import { useStore } from '../../store/store';
+import { Store } from '../../store/store';
 import { userService } from '../../services/user.service';
 import { postService } from '../../services/post.service';
 import { albumService } from '../../services/album.service';
@@ -15,16 +15,49 @@ import { IPost } from '../../interfaces/post.interface';
 import { ITodo } from '../../interfaces/todo.interface';
 import { IPhoto } from '../../interfaces/photo.interface';
 import { IComment } from '../../interfaces/comment.interface';
+import { retrieveOrSaveLocalStorageData } from '../../helpers/retrieve-or-save-local-storage-data.helper';
+import { EKey } from '../../enums/local-storage-keys.enum';
 
 const MainLayout: FC = () => {
-    const {
-        albumSlice: {albums, albumsPageSize, getAlbums},
-        commentSlice: {comments, commentsPageSize, getComments},
-        photoSlice: {photos, photosPageSize, getPhotos},
-        postSlice: {posts, postsPageSize, getPosts},
-        todoSlice: {todos, todosPageSize, getTodos},
-        userSlice: {users, usersPageSize, getUsers},
-    } = useStore();
+    const [albums, setAlbums] = useState<IAlbum[][]>([]);
+    const [albumsPage, setAlbumsPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.albumsPage, 1));
+    const [albumsPageSize, changeAlbumsPageSize] = useState<number>(retrieveOrSaveLocalStorageData(EKey.albumsPageSize, 25));
+    const [selectedAlbum, setSelectedAlbum] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedAlbum, 0));
+
+    const [comments, setComments] = useState<IComment[][]>([]);
+    const [commentsPage, setCommentsPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.commentsPage, 1));
+    const [commentsPageSize, changeCommentsPageSize] = useState<number>(retrieveOrSaveLocalStorageData(EKey.commentsPageSize, 25));
+    const [selectedComment, setSelectedComment] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedComment, 0));
+
+    const [photos, setPhotos] = useState<IPhoto[][]>([]);
+    const [photosPage, setPhotosPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.photosPage, 1));
+    const [photosPageSize, changePhotosPageSize] = useState(retrieveOrSaveLocalStorageData(EKey.photosPageSize, 25));
+    const [selectedPhoto, setSelectedPhoto] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedPhoto, 0));
+
+    const [posts, setPosts] = useState<IPost[][]>([]);
+    const [postsPage, setPostsPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.postsPage, 1));
+    const [postsPageSize, changePostsPageSize] = useState<number>(retrieveOrSaveLocalStorageData(EKey.postsPageSize, 25));
+    const [selectedPost, setSelectedPost] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedPost, 0));
+
+    const [todos, setTodos] = useState<ITodo[][]>([]);
+    const [todosPage, setTodosPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.todosPage, 1));
+    const [todosPageSize, changeTodosPageSize] = useState<number>(retrieveOrSaveLocalStorageData(EKey.todosPageSize, 25));
+    const [selectedTodo, setSelectedTodo] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedTodo, 0));
+
+    const [users, setUsers] = useState<IUser[][]>([]);
+    const [usersPage, setUsersPage] = useState<number>(retrieveOrSaveLocalStorageData(EKey.usersPage, 1));
+    const [usersPageSize, changeUsersPageSize] = useState<number>(retrieveOrSaveLocalStorageData(EKey.usersPageSize, 25));
+    const [selectedUser, setSelectedUser] = useState<number>(retrieveOrSaveLocalStorageData(EKey.selectedUser, 0));
+
+    const divideItemsByPageSize = <T, >(items: T[], pageSize: number): T[][] => {
+        const result: T[][] = [];
+
+        for (let i = 0; i < items.length; i += pageSize) {
+            result.push(items.slice(i, i + pageSize));
+        }
+
+        return result;
+    };
 
     const updateUserRelations = (
         users: IUser[],
@@ -68,55 +101,151 @@ const MainLayout: FC = () => {
 
     useEffect(() => {
         Promise.all([
-            commentService.getAll(),
-            todoService.getAll(),
-            photoService.getAll(),
             albumService.getAll(),
+            commentService.getAll(),
+            photoService.getAll(),
             postService.getAll(),
+            todoService.getAll(),
             userService.getAll()
-        ]).then(([commentsResponse, todosResponse, photosResponse, albumsResponse, postsResponse, usersResponse]) => {
-            const updatedUsers = updateUserRelations(usersResponse.data, albumsResponse.data, postsResponse.data, todosResponse.data);
-            const updatedAlbums = updateAlbumRelations(albumsResponse.data, photosResponse.data);
-            const updatedPosts = updatePostRelations(postsResponse.data, commentsResponse.data);
+        ]).then(([
+                     {data: albumsResponse},
+                     {data: commentsResponse},
+                     {data: photosResponse},
+                     {data: postsResponse},
+                     {data: todosResponse},
+                     {data: usersResponse},
+                 ]) => {
+            const updatedUsers = updateUserRelations(usersResponse, albumsResponse, postsResponse, todosResponse);
+            const updatedAlbums = updateAlbumRelations(albumsResponse, photosResponse);
+            const updatedPosts = updatePostRelations(postsResponse, commentsResponse);
 
-            getComments(commentsResponse.data);
-            getTodos(todosResponse.data);
-            getPhotos(photosResponse.data);
-            getAlbums(updatedAlbums);
-            getPosts(updatedPosts);
-            getUsers(updatedUsers);
+            setAlbums(divideItemsByPageSize(updatedAlbums, albumsPageSize));
+            setComments(divideItemsByPageSize(commentsResponse, commentsPageSize));
+            setPhotos(divideItemsByPageSize(photosResponse, photosPageSize));
+            setPosts(divideItemsByPageSize(updatedPosts, postsPageSize));
+            setTodos(divideItemsByPageSize(todosResponse, todosPageSize));
+            setUsers(divideItemsByPageSize(updatedUsers, usersPageSize));
         });
     }, []);
 
     useEffect(() => {
-        getAlbums(albums.flat());
+        setAlbums(divideItemsByPageSize(albums.flat(), albumsPageSize));
     }, [albumsPageSize]);
 
     useEffect(() => {
-        getComments(comments.flat());
+        setComments(divideItemsByPageSize(comments.flat(), commentsPageSize));
     }, [commentsPageSize]);
 
     useEffect(() => {
-        getPhotos(photos.flat());
+        setPhotos(divideItemsByPageSize(photos.flat(), photosPageSize));
     }, [photosPageSize]);
 
     useEffect(() => {
-        getPosts(posts.flat());
+        setPosts(divideItemsByPageSize(posts.flat(), postsPageSize));
     }, [postsPageSize]);
 
     useEffect(() => {
-        getTodos(todos.flat());
+        setTodos(divideItemsByPageSize(todos.flat(), todosPageSize));
     }, [todosPageSize]);
 
     useEffect(() => {
-        getUsers(users.flat());
+        setUsers(divideItemsByPageSize(users.flat(), usersPageSize));
     }, [usersPageSize]);
 
+    const setAlbumsPageSize = (pageSize: number) => {
+        setAlbumsPage(1)
+        changeAlbumsPageSize(pageSize)
+    }
+
+    const setCommentsPageSize = (pageSize: number) => {
+        setCommentsPage(1)
+        changeCommentsPageSize(pageSize)
+    }
+
+    const setPhotosPageSize = (pageSize: number) => {
+        setPhotosPage(1)
+        changePhotosPageSize(pageSize)
+    }
+
+    const setPostsPageSize = (pageSize: number) => {
+        setPostsPage(1)
+        changePostsPageSize(pageSize)
+    }
+
+    const setTodosPageSize = (pageSize: number) => {
+        setTodosPage(1)
+        changeTodosPageSize(pageSize)
+    }
+
+    const setUsersPageSize = (pageSize: number) => {
+        setUsersPage(1)
+        changeUsersPageSize(pageSize)
+    }
+
     return (
-        <div className={css.Container}>
-            <HeaderComponent />
-            <Outlet />
-        </div>
+        <Store.Provider value={
+            {
+                albumSlice: {
+                    albumsPage,
+                    setAlbumsPage,
+                    albumsPageSize,
+                    setAlbumsPageSize,
+                    albums,
+                    selectedAlbum,
+                    setSelectedAlbum,
+                },
+                commentSlice: {
+                    commentsPage,
+                    setCommentsPage,
+                    commentsPageSize,
+                    setCommentsPageSize,
+                    comments,
+                    selectedComment,
+                    setSelectedComment,
+                },
+                photoSlice: {
+                    photosPage,
+                    setPhotosPage,
+                    photosPageSize,
+                    setPhotosPageSize,
+                    photos,
+                    selectedPhoto,
+                    setSelectedPhoto,
+                },
+                postSlice: {
+                    postsPage,
+                    setPostsPage,
+                    postsPageSize,
+                    setPostsPageSize,
+                    posts,
+                    selectedPost,
+                    setSelectedPost,
+                },
+                todoSlice: {
+                    todosPage,
+                    setTodosPage,
+                    todosPageSize,
+                    setTodosPageSize,
+                    todos,
+                    selectedTodo,
+                    setSelectedTodo,
+                },
+                userSlice: {
+                    usersPage,
+                    setUsersPage,
+                    usersPageSize,
+                    setUsersPageSize,
+                    users,
+                    selectedUser,
+                    setSelectedUser,
+                },
+            }
+        }>
+            <div className={css.Container}>
+                <HeaderComponent />
+                <Outlet />
+            </div>
+        </Store.Provider>
     );
 };
 

@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import css from '../../styles/ItemsPage.module.css';
 import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
 import { EKey } from '../../../enums/local-storage-keys.enum';
 import PhotosComponent from '../../../components/photos/photos/PhotosComponent';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 const PhotosPage: FC = () => {
     const {
@@ -15,7 +15,7 @@ const PhotosPage: FC = () => {
             photosPage,
             setPhotosPage
         }
-    } = useStore();
+    } = useAppContext();
 
     return (
         <div className={css.Container}>

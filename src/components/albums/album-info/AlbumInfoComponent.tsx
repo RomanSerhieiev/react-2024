@@ -5,8 +5,8 @@ import { IAlbum } from '../../../interfaces/album.interface';
 import { IPhoto } from '../../../interfaces/photo.interface';
 import { useNavigate } from 'react-router-dom';
 import { EKey } from '../../../enums/local-storage-keys.enum';
-import { useStore } from '../../../store/store';
 import { navigateHelper } from '../../../helpers/navigate.helper';
+import { useAppContext } from '../../../hooks/useAppContext';
 
 interface IProps {
     user: IUser,
@@ -18,7 +18,7 @@ const AlbumInfoComponent: FC<IProps> = ({user, album, photos}) => {
     const {
         userSlice: {setSelectedUser},
         photoSlice: {setSelectedPhoto},
-    } = useStore();
+    } = useAppContext();
 
     const navigate = useNavigate();
 
