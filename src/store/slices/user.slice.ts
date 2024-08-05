@@ -6,6 +6,7 @@ import { AxiosError } from 'axios';
 const initialState: IUserSlice = {
     user: null,
     users: [],
+    error: '',
     isLoaded: false
 };
 
@@ -25,9 +26,9 @@ const getUsers = createAsyncThunk(
 
 const getUserById = createAsyncThunk(
     'userSlice/getUserById',
-    async (_: string, thunkAPI) => {
+    async (id: string, thunkAPI) => {
         try {
-            return thunkAPI.fulfillWithValue(await userService.getById(_))
+            return thunkAPI.fulfillWithValue(await userService.getById(id))
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error.response?.data);
@@ -43,19 +44,18 @@ export const userSlice = createSlice({
             state.isLoaded = action.payload
         }
     },
-    extraReducers: builder =>
-        builder
+    extraReducers: builder => builder
             .addCase(getUserById.fulfilled, (state, action) => {
                 state.user = action.payload;
             })
             .addCase(getUserById.rejected, (state, action) => {
-                //...
+                state.error = action.payload as string;
             })
             .addCase(getUsers.fulfilled, (state, action) => {
                 state.users = action.payload;
             })
             .addCase(getUsers.rejected, (state, action) => {
-                //...
+                state.error = action.payload as string;
             })
             .addMatcher(isFulfilled(getUsers), (state, action) => {
                 state.isLoaded = true
