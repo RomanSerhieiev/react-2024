@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, isFulfilled, PayloadAction } from '@reduxjs/toolkit';
-import { TUserSlice } from '../../types/user-slice.type';
+import { IUserSlice } from '../../interfaces/user-slice.interface';
 import { userService } from '../../services/user.service';
 import { AxiosError } from 'axios';
 
-const initialState: TUserSlice = {
+const initialState: IUserSlice = {
     users: [],
     isLoaded: false
 };

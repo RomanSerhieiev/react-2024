@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { TPostSlice } from '../../types/post-slice.type';
+import { IPostSlice } from '../../interfaces/post-slice.interface';
 import { postService } from '../../services/post.service';
 
-const initialState: TPostSlice = {
+const initialState: IPostSlice = {
     posts: []
 };
 

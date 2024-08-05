@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 import { IUser } from '../../interfaces/user.interface';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigate } from '../../hooks/useAppNavigate';
 
 interface IProps {
-    user: IUser
+    user: IUser;
 }
 
 const UserComponent: FC<IProps> = ({user}) => {
-    const navigate = useNavigate()
+    const navigate = useAppNavigate();
 
     return (
         <div>
             {user.id}. {user.name}
-            <button onClick={() => navigate(`${user.id}`)}>details</button>
+            <button onClick={() => navigate(`${user.id}`, user)}>details</button>
         </div>
     );
 };
