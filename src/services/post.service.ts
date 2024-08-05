@@ -6,5 +6,9 @@ export const postService = {
     getAll: async (): Promise<IPost[]> => {
         const {data} = await apiService.get<IPost[]>(url.posts.all);
         return data
-    }
+    },
+    getById: async (id: string): Promise<IPost> => {
+        const {data} = await apiService.get<IPost>(url.posts.byId(id));
+        return data
+    },
 }

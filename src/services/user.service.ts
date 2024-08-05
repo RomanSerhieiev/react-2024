@@ -6,5 +6,9 @@ export const userService = {
     getAll: async (): Promise<IUser[]> => {
         const {data} = await apiService.get<IUser[]>(url.users.all);
         return data
-    }
+    },
+    getById: async (id: string): Promise<IUser> => {
+        const {data} = await apiService.get<IUser>(url.users.byId(id));
+        return data
+    },
 }

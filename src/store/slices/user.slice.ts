@@ -4,12 +4,13 @@ import { userService } from '../../services/user.service';
 import { AxiosError } from 'axios';
 
 const initialState: IUserSlice = {
+    user: null,
     users: [],
     isLoaded: false
 };
 
-const loadUsers = createAsyncThunk(
-    'userSlice/loadUsers',
+const getUsers = createAsyncThunk(
+    'userSlice/getUsers',
     async (_, thunkAPI) => {
         try {
             const users = thunkAPI.fulfillWithValue(await userService.getAll());
@@ -22,6 +23,18 @@ const loadUsers = createAsyncThunk(
     }
 );
 
+const getUserById = createAsyncThunk(
+    'userSlice/getUserById',
+    async (_: string, thunkAPI) => {
+        try {
+            return thunkAPI.fulfillWithValue(await userService.getById(_))
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error.response?.data);
+        }
+    }
+)
+
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState,
@@ -32,18 +45,25 @@ export const userSlice = createSlice({
     },
     extraReducers: builder =>
         builder
-            .addCase(loadUsers.fulfilled, (state, action) => {
-                state.users = action.payload;
+            .addCase(getUserById.fulfilled, (state, action) => {
+                state.user = action.payload;
             })
-            .addCase(loadUsers.rejected, (state, action) => {
+            .addCase(getUserById.rejected, (state, action) => {
                 //...
             })
-            .addMatcher(isFulfilled(loadUsers), (state, action) => {
+            .addCase(getUsers.fulfilled, (state, action) => {
+                state.users = action.payload;
+            })
+            .addCase(getUsers.rejected, (state, action) => {
+                //...
+            })
+            .addMatcher(isFulfilled(getUsers), (state, action) => {
                 state.isLoaded = true
             })
 });
 
 export const userActions = {
     ...userSlice.actions,
-    loadUsers
+    getUsers,
+    getUserById
 };

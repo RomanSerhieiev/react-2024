@@ -7,10 +7,12 @@ const endpoint = {
 
 const url = {
     posts: {
-        all: endpoint.posts
+        all: endpoint.posts,
+        byId: (id: string): string => `${endpoint.posts}/${id}`,
     },
     users: {
-        all: endpoint.users
+        all: endpoint.users,
+        byId: (id: string): string => `${endpoint.users}/${id}`
     }
 }
 

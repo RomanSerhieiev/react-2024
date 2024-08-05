@@ -9,8 +9,8 @@ const MainLayout: FC = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(userActions.loadUsers())
-        dispatch(postActions.loadPosts())
+        dispatch(userActions.getUsers())
+        dispatch(postActions.getPosts())
     }, []);
 
     return (

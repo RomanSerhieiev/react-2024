@@ -7,7 +7,7 @@ const initialState: IPostSlice = {
     posts: []
 };
 
-const loadPosts = createAsyncThunk(
+const getPosts = createAsyncThunk(
     'postSlice/loadPosts',
     async (_, thunkAPI) => {
         try {
@@ -25,15 +25,15 @@ export const postSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(loadPosts.fulfilled, (state, action) => {
+            .addCase(getPosts.fulfilled, (state, action) => {
                 state.posts = action.payload;
             })
-            .addCase(loadPosts.rejected, (state, action) => {
+            .addCase(getPosts.rejected, (state, action) => {
                 //...
             })
 });
 
 export const postActions = {
     ...postSlice.actions,
-    loadPosts
+    getPosts
 };
