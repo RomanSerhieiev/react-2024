@@ -6,13 +6,13 @@ import { IPost } from '../../interfaces/post.interface';
 interface IPostSlice {
     posts: IPost[],
     post: IPost | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: IPostSlice = {
     posts: [],
     post: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(

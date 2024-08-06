@@ -6,13 +6,13 @@ import { ITodo } from '../../interfaces/todo.interface';
 interface ITodoSlice {
     todos: ITodo[],
     todo: ITodo | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: ITodoSlice = {
     todos: [],
     todo: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(

@@ -6,13 +6,13 @@ import { IPhoto } from '../../interfaces/photo.interface';
 interface IPhotoSlice {
     photos: IPhoto[],
     photo: IPhoto | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: IPhotoSlice = {
     photos: [],
     photo: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(

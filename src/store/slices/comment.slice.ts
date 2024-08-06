@@ -6,13 +6,13 @@ import { IComment } from '../../interfaces/comment.interface';
 interface ICommentSlice {
     comments: IComment[],
     comment: IComment | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: ICommentSlice = {
     comments: [],
     comment: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(

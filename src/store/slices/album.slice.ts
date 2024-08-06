@@ -6,13 +6,13 @@ import { IAlbum } from '../../interfaces/album.interface';
 interface IAlbumSlice {
     albums: IAlbum[],
     album: IAlbum | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: IAlbumSlice = {
     albums: [],
     album: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(

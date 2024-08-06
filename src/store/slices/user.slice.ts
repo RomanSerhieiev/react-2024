@@ -6,13 +6,13 @@ import { IUser } from '../../interfaces/user.interface';
 interface IUserSlice {
     users: IUser[],
     user: IUser | null,
-    error: string,
+    error: string | null,
 }
 
 const initialState: IUserSlice = {
     users: [],
     user: null,
-    error: '',
+    error: null,
 };
 
 const getAll = createAsyncThunk(
