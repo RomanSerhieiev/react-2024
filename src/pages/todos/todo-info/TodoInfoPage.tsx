@@ -1,23 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import TodoInfoComponent from '../../../components/todos/todo-info/TodoInfoComponent';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { todoActions } from '../../../store/slices/todo.slice';
 
 const TodoInfoPage: FC = () => {
-    const {
-        todoSlice: {todos},
-        userSlice: {users},
-    } = useStore();
-
+    const dispatch = useAppDispatch();
     const {todoId = '1'} = useParams();
 
-    const todo = todos.flat().find(todo => todo.id === +todoId);
-    const user = users.flat().find(user => todo?.userId === user.id);
+    useEffect(() => {
+        dispatch(todoActions.getById(todoId));
+    }, [todoId]);
 
     return (
         <div className={css.Container}>
-            {todo && user && <TodoInfoComponent todo={todo} user={user} />}
+            <TodoInfoComponent />
         </div>
     );
 };

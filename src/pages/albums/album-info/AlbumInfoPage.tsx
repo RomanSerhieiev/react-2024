@@ -1,25 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import AlbumInfoComponent from '../../../components/albums/album-info/AlbumInfoComponent';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { albumActions } from '../../../store/slices/album.slice';
 
 const AlbumInfoPage: FC = () => {
-    const {
-        userSlice: {users},
-        albumSlice: {albums},
-        photoSlice: {photos}
-    } = useStore();
-
+    const dispatch = useAppDispatch();
     const {albumId = '1'} = useParams();
 
-    const album = albums.flat().find(album => album.id === +albumId);
-    const user = users.flat().find(user => album?.userId === user.id);
-    const albumPhotos = photos.flat().filter(photo => album?.photosIds.includes(photo.id));
+    useEffect(() => {
+        dispatch(albumActions.getById(albumId));
+    }, [albumId]);
 
     return (
         <div className={css.Container}>
-            {album && user && photos && <AlbumInfoComponent album={album} user={user} photos={albumPhotos} />}
+            <AlbumInfoComponent />
         </div>
     );
 };

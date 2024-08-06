@@ -1,8 +1,18 @@
 import { apiService } from './api.service';
 import { url } from '../constants/urls';
 import { IPhoto } from '../interfaces/photo.interface';
-import { IAxiosResponse } from '../types/axios-response';
 
 export const photoService = {
-    getAll: (): IAxiosResponse<IPhoto[]> => apiService.get<IPhoto[]>(url.photos.all),
+    getAll: async (): Promise<IPhoto[]> => {
+        const {data} = await apiService.get<IPhoto[]>(url.photos.all);
+        return data;
+    },
+    getById: async (id: string): Promise<IPhoto> => {
+        const {data} = await apiService.get<IPhoto>(url.photos.byId(id));
+        return data;
+    },
+    getByAlbum: async (albumId: string): Promise<IPhoto[]> => {
+        const {data} = await apiService.get<IPhoto[]>(url.photos.byAlbum(albumId));
+        return data;
+    },
 };

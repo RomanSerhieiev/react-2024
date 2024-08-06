@@ -23,7 +23,7 @@
     text-transform: lowercase;
 }
 
-.MainContainer {
+.Container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@
     gap: 50px;
 }
 
-.MainContainer button, .ItemContainer button {
+.Container button {
     text-transform: uppercase;
     padding: 10px 20px;
     border: none;
@@ -46,21 +46,4 @@
     color: #fff;
     font-weight: bold;
     cursor: pointer;
-}
-
-.ItemsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.ItemContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border: #263e52 solid 4px;
-    border-radius: 20px;
-    justify-content: space-between;
 }

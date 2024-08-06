@@ -1,42 +1,18 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemInfoComponent.module.css';
-import { IUser } from '../../../interfaces/user.interface';
-import { IAlbum } from '../../../interfaces/album.interface';
-import { IPhoto } from '../../../interfaces/photo.interface';
 import { useNavigate } from 'react-router-dom';
-import { EKey } from '../../../enums/local-storage-keys.enum';
-import { useStore } from '../../../store/store';
-import { navigateHelper } from '../../../helpers/navigate.helper';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 
-interface IProps {
-    user: IUser,
-    album: IAlbum,
-    photos: IPhoto[]
-}
-
-const AlbumInfoComponent: FC<IProps> = ({user, album, photos}) => {
-    const {
-        userSlice: {setSelectedUser},
-        photoSlice: {setSelectedPhoto},
-    } = useStore();
+const AlbumInfoComponent: FC = () => {
+    const album = useAppSelector(state => state.albumSlice.album);
 
     const navigate = useNavigate();
 
     return (
-        <div className={css.Container}>
-            <h2>{album.id}. {album.title}</h2>
-            <div className={css.MainContainer}>
-                <div>USER: <button onClick={() => navigateHelper(EKey.selectedUser, user.id, '/users', setSelectedUser, navigate)}>{user.name}</button></div>
-            </div>
-            <h3>{album.title}'s photos</h3>
-            <div className={css.ItemsContainer}>
-                {photos.map(photo => (
-                    <div className={css.ItemContainer} key={photo.id}>
-                        <h4>{photo.id}. {photo.title}</h4>
-                        <button onClick={() => navigateHelper(EKey.selectedPhoto, photo.id, '/photos', setSelectedPhoto, navigate)}>INFO</button>
-                    </div>
-                ))}
-            </div>
+        album && <div className={css.Container}>
+          <h3>{album.id}. {album.title}</h3>
+          <button onClick={() => navigate(`/users/${album.userId}`)}>USER</button>
+          <button onClick={() => navigate(`photos`)}>PHOTOS</button>
         </div>
     );
 };

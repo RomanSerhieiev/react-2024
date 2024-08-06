@@ -1,16 +1,23 @@
 import React, { FC } from 'react';
 import css from '../../styles/ItemsComponent.module.css';
 import UserComponent from '../user/UserComponent';
-import { useStore } from '../../../store/store';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useSearchParams } from 'react-router-dom';
 
 const UsersComponent: FC = () => {
-    const {
-        userSlice: {users, usersPage}
-    } = useStore();
+    const users = useAppSelector(state => state.userSlice.users);
+    const [params] = useSearchParams({
+        page: '1',
+        skip: '25'
+    });
+    const pageParam = params.get('page');
+    const page = pageParam ? +pageParam : 1;
+    const skipParam = params.get('skip');
+    const skip = skipParam ? +skipParam : 25;
 
     return (
         <div className={css.Container}>
-            {users.length && users[usersPage - 1].map(user => <UserComponent key={user.id} user={user} />)}
+            {users.slice((page - 1) * skip, (page - 1) * skip + skip).map(user => <UserComponent key={user.id} user={user} />)}
         </div>
     );
 };

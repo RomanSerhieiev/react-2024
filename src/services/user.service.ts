@@ -1,8 +1,14 @@
 import { apiService } from './api.service';
 import { url } from '../constants/urls';
 import { IUser } from '../interfaces/user.interface';
-import { IAxiosResponse } from '../types/axios-response';
 
 export const userService = {
-    getAll: (): IAxiosResponse<IUser[]> => apiService.get<IUser[]>(url.users.all),
+    getAll: async (): Promise<IUser[]> => {
+        const {data} = await apiService.get<IUser[]>(url.users.all);
+        return data;
+    },
+    getById: async (id: string): Promise<IUser> => {
+        const {data} = await apiService.get<IUser>(url.users.byId(id));
+        return data;
+    },
 };

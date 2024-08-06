@@ -1,25 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import css from '../../styles/ItemInfoPage.module.css';
-import { useStore } from '../../../store/store';
 import { useParams } from 'react-router-dom';
 import PostInfoComponent from '../../../components/posts/post-info/PostInfoComponent';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { postActions } from '../../../store/slices/post.slice';
 
 const PostInfoPage: FC = () => {
-    const {
-        userSlice: {users},
-        postSlice: {posts},
-        commentSlice: {comments}
-    } = useStore();
-
+    const dispatch = useAppDispatch();
     const {postId = '1'} = useParams();
 
-    const post = posts.flat().find(post => post.id === +postId);
-    const user = users.flat().find(user => post?.userId === user.id);
-    const postComments = comments.flat().filter(comment => post?.commentsIds.includes(comment.id));
+    useEffect(() => {
+        dispatch(postActions.getById(postId));
+    }, [postId]);
 
     return (
         <div className={css.Container}>
-            {post && user && comments && <PostInfoComponent post={post} user={user} comments={postComments} />}
+            <PostInfoComponent />
         </div>
     );
 };

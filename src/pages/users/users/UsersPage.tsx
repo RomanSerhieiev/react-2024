@@ -1,30 +1,38 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import css from '../../styles/ItemsPage.module.css';
 import UsersComponent from '../../../components/users/users/UsersComponent';
-import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
-import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useSearchParams } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { albumActions } from '../../../store/slices/album.slice';
+import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
+import { userActions } from '../../../store/slices/user.slice';
 
 const UsersPage: FC = () => {
-    const {
-        userSlice: {
-            usersPageSize,
-            setUsersPageSize,
-            users,
-            usersPage,
-            setUsersPage
-        }
-    } = useStore();
+    const users = useAppSelector(state => state.userSlice.users);
+    const dispatch = useAppDispatch();
+    const [params] = useSearchParams({
+        page: '1',
+        skip: '25'
+    });
+
+    const skipParam = params.get('skip');
+    const skip = skipParam ? +skipParam : 25;
+    const pages = users.length % skip === 0 ? users.length / skip : Math.floor(users.length / skip) + 1;
+
+    useEffect(() => {
+        dispatch(userActions.getAll());
+    }, []);
 
     return (
         <div className={css.Container}>
             <div>
                 <h1>USERS</h1>
-                <FiltrationComponent pageSize={usersPageSize} enumKey={EKey.usersPageSize} setPageSize={setUsersPageSize} />
+                <FiltrationComponent items={users.length} />
                 <UsersComponent />
             </div>
-            <PaginationComponent enumKey={EKey.usersPage} page={usersPage} pages={users.length} setPage={setUsersPage} />
+            <PaginationComponent pages={pages} />
         </div>
     );
 };

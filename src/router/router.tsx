@@ -21,13 +21,56 @@ const routs: RouteObject[] = [
         errorElement: <ErrorLayout />,
         children: [
             {
-                path: 'users',
                 element: <UsersPage />,
                 index: true,
             },
             {
+                path: 'users',
+                element: <UsersPage />
+            },
+            {
                 path: 'users/:userId',
                 element: <UserInfoPage />
+            },
+            {
+                path: 'users/:userId/albums',
+                element: <AlbumsPage />
+            },
+            {
+                path: 'users/:userId/albums/:albumId',
+                element: <AlbumInfoPage />
+            },
+            {
+                path: 'users/:userId/albums/:albumId/photos',
+                element: <PhotosPage />
+            },
+            {
+                path: 'users/:userId/albums/:albumId/photos/:photoId',
+                element: <PhotoInfoPage />
+            },
+            {
+                path: 'users/:userId/todos',
+                element: <TodosPage />
+            },
+            {
+                path: 'users/:userId/todos/:todoId',
+                element: <TodoInfoPage />
+            },
+            {
+                path: 'users/:userId/posts',
+                element: <PostsPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId',
+                element: <PostInfoPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId/comments',
+                element: <CommentsPage />
+            },
+            {
+                path: 'users/:userId/posts/:postId/comments/:commentId',
+                element: <CommentInfoPage />
             },
             {
                 path: 'posts',
@@ -36,6 +79,14 @@ const routs: RouteObject[] = [
             {
                 path: 'posts/:postId',
                 element: <PostInfoPage />
+            },
+            {
+                path: 'posts/:postId/comments',
+                element: <CommentsPage />
+            },
+            {
+                path: 'posts/:postId/comments/:commentId',
+                element: <CommentInfoPage />
             },
             {
                 path: 'comments',
@@ -52,6 +103,14 @@ const routs: RouteObject[] = [
             {
                 path: 'albums/:albumId',
                 element: <AlbumInfoPage />
+            },
+            {
+                path: 'albums/:albumId/photos',
+                element: <PhotosPage />
+            },
+            {
+                path: 'albums/:albumId/photos/:photoId',
+                element: <PhotoInfoPage />
             },
             {
                 path: 'photos',

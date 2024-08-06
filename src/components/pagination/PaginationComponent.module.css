@@ -25,12 +25,13 @@
 
 .Item3 {
     grid-column: 3;
+    display: flex;
+    justify-content: center;
     padding: 10px 20px;
     border: #263e52 3px solid;
     border-radius: 5px;
     font-weight: bold;
     font-size: 17px;
-    text-align: center;
     background-color: #263e52;
     color: white;
 }

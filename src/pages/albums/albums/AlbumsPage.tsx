@@ -1,30 +1,42 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import css from '../../styles/ItemsPage.module.css';
 import AlbumsComponent from '../../../components/albums/albums/AlbumsComponent';
-import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 import PaginationComponent from '../../../components/pagination/PaginationComponent';
-import { useStore } from '../../../store/store';
-import { EKey } from '../../../enums/local-storage-keys.enum';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { albumActions } from '../../../store/slices/album.slice';
+import { useParams, useSearchParams } from 'react-router-dom';
+import FiltrationComponent from '../../../components/filtration/FiltrationComponent';
 
 const AlbumsPage: FC = () => {
-    const {
-        albumSlice: {
-            albumsPageSize,
-            setAlbumsPageSize,
-            albums,
-            albumsPage,
-            setAlbumsPage
+    const albums = useAppSelector(state => state.albumSlice.albums);
+    const {userId} = useParams();
+    const dispatch = useAppDispatch();
+    const [params] = useSearchParams({
+        page: '1',
+        skip: '25'
+    });
+
+    const skipParam = params.get('skip');
+    const skip = skipParam ? +skipParam : 25;
+    const pages = albums.length % skip === 0 ? albums.length / skip : Math.floor(albums.length / skip) + 1
+
+    useEffect(() => {
+        if (userId) {
+            dispatch(albumActions.getByUser(userId));
+        } else {
+            dispatch(albumActions.getAll());
         }
-    } = useStore();
+    }, [userId]);
 
     return (
         <div className={css.Container}>
             <div>
                 <h1>ALBUMS</h1>
-                <FiltrationComponent pageSize={albumsPageSize} enumKey={EKey.albumsPageSize} setPageSize={setAlbumsPageSize} />
+                <FiltrationComponent items={albums.length} />
                 <AlbumsComponent />
             </div>
-            <PaginationComponent enumKey={EKey.albumsPage} page={albumsPage} pages={albums.length} setPage={setAlbumsPage} />
+            <PaginationComponent pages={pages} />
         </div>
     );
 };

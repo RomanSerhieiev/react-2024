@@ -13,13 +13,3 @@
     font-size: 17px;
     cursor: pointer;
 }
-
-.Container select {
-    padding: 5px;
-    border: #263e52 3px solid;
-    border-radius: 5px;
-}
-
-.Container option {
-
-}

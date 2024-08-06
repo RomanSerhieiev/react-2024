@@ -1,32 +1,30 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { FC } from 'react';
 import css from './FiltrationComponent.module.css';
-import { localStorageSave } from '../../helpers/local-storage-save.helper';
-import { EKey } from '../../enums/local-storage-keys.enum';
-import { retrieveLocalStorageData } from '../../helpers/retrieve-local-storage-data.helper';
+import { useSearchParams } from 'react-router-dom';
 
 interface IProps {
-    pageSize: number,
-    enumKey: EKey,
-    setPageSize: (page: number) => void
+    items: number;
 }
 
-const FiltrationComponent: FC<IProps> = ({pageSize, enumKey, setPageSize}) => {
-    const handlePageSize = (pageSize: ChangeEvent<HTMLSelectElement>) => {
-        localStorageSave<number>(enumKey, +pageSize.target.value);
-        setPageSize(retrieveLocalStorageData<number>(enumKey));
+const FiltrationComponent: FC<IProps> = ({items}) => {
+    const [params, setParams] = useSearchParams({
+        page: '1',
+        skip: '25'
+    });
+
+    const skipHandler = (skip: string) => {
+        setParams({page: '1', skip});
     };
 
+    const skip = params.get('skip') || '25';
+
     return (
-        <form className={css.Container}>
-            <label>Display on page: {}
-                <select value={pageSize} onChange={handlePageSize}>
-                    <option value={25}>25</option>
-                    <option value={50}>50</option>
-                    <option value={75}>75</option>
-                    <option value={100}>100</option>
-                </select>
-            </label>
-        </form>
+        <div className={css.Container}>
+            <button disabled={skip === '25' || items < 25} onClick={() => skipHandler('25')}>25</button>
+            <button disabled={skip === '50' || items < 50} onClick={() => skipHandler('50')}>50</button>
+            <button disabled={skip === '75' || items < 75} onClick={() => skipHandler('75')}>75</button>
+            <button disabled={skip === '100' || items < 100} onClick={() => skipHandler('100')}>100</button>
+        </div>
     );
 };
 
